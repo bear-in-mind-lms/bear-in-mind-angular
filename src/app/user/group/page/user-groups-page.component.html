@@ -1,0 +1,58 @@
+<app-page-content appBar>
+  <app-page-section sectionTitle="*"
+                    i18n-sectionTitle="@@myGroups"
+                    sectionActionTitle="*"
+                    i18n-sectionActionTitle="@@showAll"
+                    [sectionActionRoute]="registeredUserGroupsRoute">
+    <app-card-list-page-section-content *ngIf="userMainViewDto; else loading"
+                                        [items]="userMainViewDto.registeredGroups"
+                                        [route]="userGroupRoute"
+                                        [imagePlaceholder]="userImagePlaceholder"
+                                        [emptyContentPlaceholder]="emptyRegisteredUserGroupsPlaceholder"/>
+  </app-page-section>
+
+  <mat-action-list>
+    <a [routerLink]="createUserGroupRoute">
+      <mat-list-item class="list-item-button">
+        <div matListItemTitle i18n="@@createUserGroup">*</div>
+      </mat-list-item>
+    </a>
+  </mat-action-list>
+
+  <app-page-section sectionTitle="*"
+                    i18n-sectionTitle="@@signUpForAGroup"
+                    sectionActionTitle="*"
+                    i18n-sectionActionTitle="@@showAll"
+                    [sectionActionRoute]="availableUserGroupsRoute">
+    <app-card-list-page-section-content *ngIf="userMainViewDto; else loading"
+                                        [items]="userMainViewDto.availableGroups"
+                                        [route]="userGroupRoute"
+                                        [imagePlaceholder]="userImagePlaceholder"
+                                        [emptyContentPlaceholder]="emptyAvailableUserGroupsPlaceholder"/>
+  </app-page-section>
+
+  <mat-action-list>
+    <a [routerLink]="groupMembersRoute">
+      <mat-list-item class="list-item-button">
+        <div matListItemTitle i18n="@@myGroupMates">*</div>
+      </mat-list-item>
+    </a>
+    <a *ngIf="userMainViewDto?.hasTeachers" [routerLink]="teachersRoute">
+      <mat-list-item class="list-item-button">
+        <div matListItemTitle i18n="@@myTeachers">*</div>
+      </mat-list-item>
+    </a>
+    <a *ngIf="hasTeacherRole && userMainViewDto?.hasStudents" [routerLink]="studentsRoute">
+      <mat-list-item class="list-item-button">
+        <div matListItemTitle i18n="@@myStudents">*</div>
+      </mat-list-item>
+    </a>
+  </mat-action-list>
+</app-page-content>
+<app-app-bar>
+  Bear in Mind
+</app-app-bar>
+
+<ng-template #loading>
+  Loading...
+</ng-template>

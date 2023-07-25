@@ -1,0 +1,7 @@
+<div class="section-title-bar">
+  <h3 class="bold section-title">{{sectionTitle}}</h3>
+  <a *ngIf="sectionActionTitle" class="section-action" [routerLink]="sectionActionRoute">
+    <button mat-button color="primary">{{sectionActionTitle}}</button>
+  </a>
+</div>
+<ng-content/>

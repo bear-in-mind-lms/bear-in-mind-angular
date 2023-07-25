@@ -1,0 +1,9 @@
+<a [routerLink]="itemRoute">
+  <mat-list-item>
+    <div *ngIf="itemImage" matListItemAvatar class="list-item-image" [ngStyle]="{'background-image': itemImage}"></div>
+    <div *ngIf="itemImage === undefined && avatarPlaceholder" matListItemAvatar>
+      <app-text-avatar [text]="item.name | initials" [size]="40"/>
+    </div>
+    <div matListItemTitle>{{item.name}}</div>
+  </mat-list-item>
+</a>

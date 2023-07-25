@@ -1,0 +1,7 @@
+@use 'sass:color' as color;
+@use '@angular/material' as mat;
+
+$bottom-navigation: color.change(mat.get-color-from-palette(mat.$blue-grey-palette, 400), $alpha: 0.85);
+$bottom-navigation-action: #fff;
+$bottom-navigation-active-link: color.scale($bottom-navigation, $lightness: -15%);
+$side-navigation: #f3f3f3;

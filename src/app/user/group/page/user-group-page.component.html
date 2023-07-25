@@ -1,0 +1,30 @@
+<ng-container *ngIf="userGroupDtoObservable | async as response; else loading">
+  <ng-container *ngIf="response.isSuccess()">
+    <app-page-content prominentAppBar [fab]="hasFab(response.content!)">
+      <mat-action-list>
+        <app-list-item *ngFor="let member of response.content!.members"
+                       [item]="member"
+                       [route]="userRoute"
+                       avatarPlaceholder/>
+      </mat-action-list>
+    </app-page-content>
+    <app-app-bar [previousLocation]="previousLocation"
+                 prominent
+                 [backgroundImage]="response.content!.image ?? userGroupImagePlaceholder">
+      {{response.content!.name}}
+    </app-app-bar>
+    <button *ngIf="hasFab(response.content!)"
+            mat-fab
+            extended
+            color="primary"
+            [disabled]="!(joinSubscription?.closed ?? true)"
+            (click)="joinGroup()">
+      <mat-icon>person_add_alt</mat-icon>
+      <span i18n="@@joinThisGroup">*</span>
+    </button>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>
+

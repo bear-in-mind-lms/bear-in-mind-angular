@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+a, a:visited, a:hover, a:active {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a.mat-mdc-chip * {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.no-before-content::before {
+  content: unset !important;
+}
+
+app-text-avatar {
+  &.mat-mdc-chip-avatar {
+    line-height: unset;
+  }
+}

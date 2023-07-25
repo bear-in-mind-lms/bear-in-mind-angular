@@ -1,0 +1,13 @@
+@use '../../../colors' as color;
+
+.side-navigation {
+  background-color: color.$side-navigation;
+}
+
+.navigation-list {
+  min-width: 256px;
+}
+
+.child-node {
+  padding-left: 72px;
+}

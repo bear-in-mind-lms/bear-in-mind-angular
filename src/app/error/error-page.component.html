@@ -1,0 +1,10 @@
+<div class="error-page">
+  <div [ngStyle]="{'background-image': gradient}">
+    <div class="image-background" [ngStyle]="{'background-image': image}"></div>
+  </div>
+  <div class="content-container">
+    <h1>{{errorTitle}}</h1>
+    <h3>{{errorSubtitle}}</h3>
+    <a mat-raised-button routerLink="" color="primary" i18n="@@goBackToApp">*</a>
+  </div>
+</div>

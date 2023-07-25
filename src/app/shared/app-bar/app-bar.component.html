@@ -1,0 +1,14 @@
+<mat-toolbar
+  [ngStyle]="{'height.px': prominent ? prominentToolbarHeight : toolbarHeight, 'background-image': backgroundImage}"
+  [ngClass]="{'background-image': backgroundImage}"
+  color="primary"
+  class="toolbar">
+  <button *ngIf="previousLocation" mat-icon-button class="back-button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <div #toolbarContent [ngStyle]="{'top.px': prominent ? prominentToolbarContentTop : 0}" class="toolbar-content">
+    <ng-content/>
+  </div>
+  <span class="spacer"></span>
+  <ng-content select="[toolbar-actions]"/>
+</mat-toolbar>

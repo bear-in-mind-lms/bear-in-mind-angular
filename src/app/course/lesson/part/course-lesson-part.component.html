@@ -1,0 +1,7 @@
+<p *ngIf="lessonPart.text" [innerHTML]="lessonPart.text"></p>
+<mat-chip-listbox *ngIf="lessonPart.attachments">
+  <a *ngFor="let attachment of parsedAttachments" [href]="attachment.url" target="_blank" mat-chip>
+    <mat-icon matChipAvatar>{{attachment.icon}}</mat-icon>
+    {{attachment.name}}
+  </a>
+</mat-chip-listbox>

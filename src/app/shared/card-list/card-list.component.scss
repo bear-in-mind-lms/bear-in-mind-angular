@@ -1,0 +1,18 @@
+.horizontal-list {
+  white-space: nowrap;
+  overflow-x: auto;
+
+  > * {
+    display: inline-block;
+  }
+}
+
+app-card-list-item {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 16px;
+
+  &:first-child {
+    margin-left: 16px;
+  }
+}

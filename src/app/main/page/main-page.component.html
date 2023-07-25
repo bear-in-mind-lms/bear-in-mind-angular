@@ -1,0 +1,12 @@
+<app-main-side-navigation *ngIf="sideNavigation; else bottomNavigation">
+  <ng-template [cdkPortalOutlet]="contentPortal"></ng-template>
+</app-main-side-navigation>
+
+<ng-template #bottomNavigation>
+  <ng-template [cdkPortalOutlet]="contentPortal"></ng-template>
+  <app-main-bottom-navigation *ngIf="hasBottomNavigation"/>
+</ng-template>
+
+<app-page-content #content [bottomNavigation]="!sideNavigation && hasBottomNavigation">
+  <router-outlet></router-outlet>
+</app-page-content>

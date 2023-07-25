@@ -1,0 +1,21 @@
+<ng-container *ngIf="courseViewDtoObservable | async as response; else loading">
+  <ng-container *ngIf="response.isSuccess()">
+    <app-page-content prominentAppBar [fab]="response.content!.available !== undefined">
+      <app-conducted-course-page-content *ngIf="response.content!.conducted" [course]="response.content!"/>
+      <app-active-course-page-content *ngIf="response.content!.active" [course]="response.content!"/>
+      <app-available-course-page-content *ngIf="response.content!.available"
+                                         [courseId]="courseId"
+                                         [course]="response.content!"/>
+      <app-completed-course-page-content *ngIf="response.content!.completed" [course]="response.content!"/>
+    </app-page-content>
+    <app-app-bar [previousLocation]="previousLocation"
+                 [backgroundImage]="response.content!.image ?? courseImagePlaceholder"
+                 prominent>
+      {{response.content!.name}}
+    </app-app-bar>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>
+

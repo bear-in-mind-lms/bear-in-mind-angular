@@ -1,0 +1,20 @@
+.error-page {
+  height: 100vh;
+  background-color: #455a64;
+}
+
+.image-background {
+  width: 100vw;
+  height: 83.333vw;
+  max-height: 75vh;
+  background-image: url(/assets/graphics/not-found.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.content-container {
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}

@@ -1,0 +1,14 @@
+mat-card {
+  > img {
+    object-fit: cover;
+  }
+
+  mat-card-header {
+    display: block;
+
+    .card-list-item-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

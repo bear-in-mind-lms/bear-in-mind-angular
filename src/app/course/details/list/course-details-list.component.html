@@ -1,0 +1,31 @@
+<mat-list>
+  <mat-list-item *ngIf="course.description">
+    <mat-icon matListItemIcon>description</mat-icon>
+    <span matListItemTitle i18n="@@description">*</span>
+    <span matListItemLine>{{course.description}}</span>
+  </mat-list-item>
+
+  <mat-list-item>
+    <mat-icon matListItemIcon>record_voice_over</mat-icon>
+    <span matListItemTitle i18n="@@teachers">*</span>
+    <app-user-chip-list [users]="course.teachers" class="no-before-content" matListItemLine/>
+  </mat-list-item>
+
+  <mat-list-item>
+    <mat-icon matListItemIcon>format_list_numbered</mat-icon>
+    <span matListItemTitle i18n="@@lessonCount">*</span>
+    <span matListItemLine>{{course.lessons.length}}</span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="course.available?.registrationClosingDateTime">
+    <mat-icon matListItemIcon>event_busy</mat-icon>
+    <span matListItemTitle i18n="@@registrationClosingTime">*</span>
+    <span matListItemLine>{{course.available?.registrationClosingDateTime | date:'medium'}}</span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="course.endDateTime">
+    <mat-icon matListItemIcon>event</mat-icon>
+    <span matListItemTitle i18n="@@courseClosingTime">*</span>
+    <span matListItemLine>{{course.endDateTime | date:'medium'}}</span>
+  </mat-list-item>
+</mat-list>

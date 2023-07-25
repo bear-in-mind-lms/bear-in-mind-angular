@@ -1,0 +1,22 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened fixedInViewport class="side-navigation">
+    <mat-action-list class="navigation-list">
+      <ng-container *ngFor="let parentNode of navigationNodes">
+        <a [routerLink]="parentNode.route" class="full-width">
+          <mat-list-item>
+            <mat-icon *ngIf="parentNode.icon" matListItemIcon>{{parentNode.icon}}</mat-icon>
+            <div matListItemTitle>{{parentNode.name}}</div>
+          </mat-list-item>
+        </a>
+        <a *ngFor="let childNode of parentNode.children" [routerLink]="childNode.route" class="full-width">
+          <mat-list-item class="child-node">
+            <div matListItemLine>{{childNode.name}}</div>
+          </mat-list-item>
+        </a>
+      </ng-container>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content/>
+  </mat-sidenav-content>
+</mat-sidenav-container>

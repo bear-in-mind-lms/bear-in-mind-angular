@@ -1,0 +1,9 @@
+<div infiniteScroll (scrolled)="fetchNextPage()">
+  <mat-action-list>
+    <app-list-item *ngFor="let item of items"
+                   [item]="item"
+                   [route]="route"
+                   [imagePlaceholder]="imagePlaceholder"
+                   [avatarPlaceholder]="avatarPlaceholder"/>
+  </mat-action-list>
+</div>

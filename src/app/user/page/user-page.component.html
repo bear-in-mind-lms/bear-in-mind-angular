@@ -1,0 +1,54 @@
+<ng-container *ngIf="userViewDtoObservable | async as response; else loading">
+  <ng-container *ngIf="response.isSuccess()">
+    <app-page-content appBar topMargin>
+
+      <mat-card class="user-details-card">
+        <img *ngIf="userImage" [ngSrc]="userImage" width="96" height="96" alt="">
+        <app-text-avatar *ngIf="!userImage" [text]="userName | initials" [size]="96"/>
+        <mat-list>
+          <mat-list-item *ngIf="response.content!.title">
+            <mat-icon matListItemIcon>school</mat-icon>
+            <span matListItemTitle i18n="@@personTitle">*</span>
+            <span matListItemLine>{{response.content!.title}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>event_start</mat-icon>
+            <span matListItemTitle i18n="@@registrationDate">*</span>
+            <span matListItemLine>{{response.content!.registrationDateTime | date:'medium'}}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+
+      <app-page-section sectionTitle="*" i18n-sectionTitle="@@commonCourses">
+        <mat-action-list *ngIf="commonCourses.length !== 0; else emptyCourses">
+          <app-list-item *ngFor="let course of commonCourses"
+                         [item]="course"
+                         [route]="courseRoute"
+                         [imagePlaceholder]="courseImagePlaceholder"/>
+        </mat-action-list>
+        <ng-template #emptyCourses>
+          <app-page-section-content-placeholder [placeholderImage]="emptyCoursesPlaceholder"/>
+        </ng-template>
+      </app-page-section>
+
+      <app-page-section sectionTitle="*" i18n-sectionTitle="@@commonGroups">
+        <mat-action-list *ngIf="commonGroups.length !== 0; else emptyGroups">
+          <app-list-item *ngFor="let group of commonGroups"
+                         [item]="group"
+                         [route]="userGroupRoute"
+                         [imagePlaceholder]="userGroupImagePlaceholder"/>
+        </mat-action-list>
+        <ng-template #emptyGroups>
+          <app-page-section-content-placeholder [placeholderImage]="emptyGroupsPlaceholder"/>
+        </ng-template>
+      </app-page-section>
+
+    </app-page-content>
+    <app-app-bar [previousLocation]="previousLocation">
+      {{userName}}
+    </app-app-bar>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>

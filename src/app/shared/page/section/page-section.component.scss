@@ -1,0 +1,14 @@
+.section-title-bar {
+  display: flex;
+  align-items: center;
+
+  .section-title {
+    flex: 1;
+    padding: 0 16px;
+    margin-bottom: 0;
+  }
+
+  .section-action {
+    margin-right: 8px;
+  }
+}

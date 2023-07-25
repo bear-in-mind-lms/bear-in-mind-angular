@@ -1,0 +1,8 @@
+<app-card-list *ngIf="items.length !== 0; else empty"
+               [items]="items"
+               [route]="route"
+               [imagePlaceholder]="imagePlaceholder"/>
+
+<ng-template #empty>
+  <app-page-section-content-placeholder [placeholderImage]="emptyContentPlaceholder"/>
+</ng-template>

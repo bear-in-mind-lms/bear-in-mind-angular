@@ -1,0 +1,65 @@
+<app-page-content appBar>
+  <app-page-section *ngIf="hasTeacherRole"
+                    sectionTitle="*"
+                    i18n-sectionTitle="@@coursesIRun"
+                    sectionActionTitle="*"
+                    i18n-sectionActionTitle="@@showAll"
+                    [sectionActionRoute]="conductedCoursesRoute">
+    <app-card-list-page-section-content *ngIf="courseMainViewDto; else loading"
+                                        [items]="courseMainViewDto.conductedCourses"
+                                        [route]="courseRoute"
+                                        [imagePlaceholder]="courseImagePlaceholder"
+                                        [emptyContentPlaceholder]="emptyConductedCoursesPlaceholder"/>
+  </app-page-section>
+
+  <mat-action-list *ngIf="hasTeacherRole">
+    <a [routerLink]="createCourseRoute">
+      <mat-list-item class="list-item-button">
+        <div matListItemTitle i18n="@@createCourse">*</div>
+      </mat-list-item>
+    </a>
+  </mat-action-list>
+
+  <app-page-section sectionTitle="*"
+                    i18n-sectionTitle="@@coursesIAttend"
+                    sectionActionTitle="*"
+                    i18n-sectionActionTitle="@@showAll"
+                    [sectionActionRoute]="activeCoursesRoute">
+    <app-card-list-page-section-content *ngIf="courseMainViewDto; else loading"
+                                        [items]="courseMainViewDto.activeCourses"
+                                        [route]="courseRoute"
+                                        [imagePlaceholder]="courseImagePlaceholder"
+                                        [emptyContentPlaceholder]="emptyActiveCoursesPlaceholder"/>
+  </app-page-section>
+
+  <app-page-section sectionTitle="*"
+                    i18n-sectionTitle="@@enrollInACourse"
+                    sectionActionTitle="*"
+                    i18n-sectionActionTitle="@@showAll"
+                    [sectionActionRoute]="availableCoursesRoute">
+    <app-card-list-page-section-content *ngIf="courseMainViewDto; else loading"
+                                        [items]="courseMainViewDto.availableCourses"
+                                        [route]="courseRoute"
+                                        [imagePlaceholder]="courseImagePlaceholder"
+                                        [emptyContentPlaceholder]="emptyAvailableCoursesPlaceholder"/>
+  </app-page-section>
+
+  <app-page-section sectionTitle="*"
+                    i18n-sectionTitle="@@completedCourses"
+                    sectionActionTitle="*"
+                    i18n-sectionActionTitle="@@showAll"
+                    [sectionActionRoute]="completedCoursesRoute">
+    <app-card-list-page-section-content *ngIf="courseMainViewDto; else loading"
+                                        [items]="courseMainViewDto.completedCourses"
+                                        [route]="courseRoute"
+                                        [imagePlaceholder]="courseImagePlaceholder"
+                                        [emptyContentPlaceholder]="emptyCompletedCoursesPlaceholder"/>
+  </app-page-section>
+</app-page-content>
+<app-app-bar>
+  Bear in Mind
+</app-app-bar>
+
+<ng-template #loading>
+  Loading...
+</ng-template>

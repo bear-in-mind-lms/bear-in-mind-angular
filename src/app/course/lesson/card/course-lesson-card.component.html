@@ -1,0 +1,12 @@
+<a [routerLink]="itemRoute">
+  <mat-card mat-ripple [matRippleDisabled]="isDisabled">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <app-text-avatar [text]="lesson.ordinal.toString()" [size]="40"/>
+      </div>
+      <mat-card-title [matTooltip]="lesson.topic" [matTooltipDisabled]="isTooltipDisabled"
+                      matTooltipShowDelay="500">{{lesson.topic}}</mat-card-title>
+      <mat-card-subtitle>{{lesson.description}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</a>

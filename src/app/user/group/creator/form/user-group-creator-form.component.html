@@ -1,0 +1,6 @@
+<form [formGroup]="userGroupForm" (ngSubmit)="createUserGroup()">
+  <app-translations-form-field [translationsFormControl]="userGroupForm.controls.name"
+                               [translationFieldLabelMap]="translationFieldLabelMap"/>
+
+  <button mat-raised-button class="full-width" color="primary" type="submit" i18n="@@create">*</button>
+</form>

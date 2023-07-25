@@ -1,0 +1,35 @@
+$regular-margin: 16px;
+$app-bar-margin: 64px;
+$prominent-app-bar-margin: 160px;
+
+.top-margin {
+  margin-top: $regular-margin;
+}
+
+.horizontal-margin {
+  margin: 0 $regular-margin;
+}
+
+.app-bar-margin {
+  margin-top: $app-bar-margin;
+
+  &.top-margin {
+    margin-top: calc(#{$app-bar-margin} + #{$regular-margin});
+  }
+}
+
+.prominent-app-bar-margin {
+  margin-top: $prominent-app-bar-margin;
+
+  &.top-margin {
+    margin-top: calc(#{$prominent-app-bar-margin} + #{$regular-margin});
+  }
+}
+
+.bottom-navigation-margin {
+  margin-bottom: 64px;
+}
+
+.fab-margin {
+  margin-bottom: 64px;
+}

@@ -1,0 +1,23 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+
+  &.background-image {
+    background-size: cover;
+    background-position: center;
+
+    .toolbar-content, .back-button {
+      text-shadow: 1px 1px 1px #000;
+    }
+  }
+
+  > .back-button {
+    align-self: start;
+    margin-top: 8px;
+  }
+
+  .toolbar-content {
+    position: relative;
+  }
+}

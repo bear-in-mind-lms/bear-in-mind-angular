@@ -1,0 +1,29 @@
+<form [formGroup]="courseForm" (ngSubmit)="publish()">
+  <div>
+    <app-translations-form-field [translationsFormControl]="courseForm.controls.translations"
+                                 [translationFieldLabelMap]="translationFieldLabelMap"/>
+  </div>
+
+  <div>
+    <app-date-time-form-field [dateFormControl]="courseForm.controls.startDate"
+                              [timeFormControl]="courseForm.controls.startTime"
+                              fieldLabel="*"
+                              i18n-fieldLabel="@@courseOpeningDate"/>
+  </div>
+
+  <div>
+    <app-date-time-form-field [dateFormControl]="courseForm.controls.endDate"
+                              [timeFormControl]="courseForm.controls.endTime"
+                              fieldLabel="*"
+                              i18n-fieldLabel="@@courseClosingDate"/>
+  </div>
+
+  <div>
+    <app-date-time-form-field [dateFormControl]="courseForm.controls.registrationClosingDate"
+                              [timeFormControl]="courseForm.controls.registrationClosingTime"
+                              fieldLabel="*"
+                              i18n-fieldLabel="@@registrationClosingDate"/>
+  </div>
+
+  <button mat-raised-button class="full-width" color="primary" type="submit" i18n="@@publish">*</button>
+</form>

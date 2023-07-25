@@ -1,0 +1,7 @@
+<a [routerLink]="route" routerLinkActive="active-link" #activity="routerLinkActive">
+  <div #container class="bottom-navigation-action">
+    <mat-icon *ngIf="icon" mat-ripple [matRippleTrigger]="container"
+              [fontSet]="activity.isActive ? '' : 'material-icons-outlined'">{{icon}}</mat-icon>
+    <span *ngIf="label" [ngClass]="{bold: activity.isActive, 'mat-caption': true}">{{label}}</span>
+  </div>
+</a>

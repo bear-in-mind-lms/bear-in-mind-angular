@@ -1,0 +1,23 @@
+@use '../../../colors' as color;
+
+.bottom-navigation-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 32px 4px 32px;
+  color: color.$bottom-navigation-action;
+
+  > mat-icon {
+    width: 100%;
+    padding: 4px 16px;
+    text-align: center;
+    border-radius: 24px;
+  }
+}
+
+.active-link {
+  mat-icon {
+    background-color: color.$bottom-navigation-active-link;
+  }
+}

@@ -1,0 +1,22 @@
+<ng-container *ngIf="courseLessonViewDtoObservable | async as response; else loading">
+  <ng-container *ngIf="response.isSuccess()">
+    <app-page-content appBar>
+      <mat-list *ngIf="response.content!.description">
+        <mat-list-item>
+          <mat-icon matListItemIcon>description</mat-icon>
+          <span matListItemTitle i18n="@@description">*</span>
+          <span matListItemLine>{{response.content!.description}}</span>
+        </mat-list-item>
+      </mat-list>
+      <div *ngFor="let part of response.content!.parts" class="parts-container">
+        <app-course-lesson-part [lessonPart]="part"/>
+      </div>
+    </app-page-content>
+    <app-app-bar [previousLocation]="previousLocation">
+      {{response.content!.topic}}
+    </app-app-bar>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>
