@@ -1,7 +1,11 @@
 import { CourseListItemDto } from '../../app/course/course-list-item-dto';
 import { MockUser } from '../user/mock-user';
-import { MockCourse, MockCourseStatus } from './mock-course';
-import { isCourseCompleted, mockCourses } from './mock-course-data';
+import { isCourseCompleted, MockCourse, MockCourseStatus } from './mock-course';
+import { mockCourses } from './mock-course-data';
+
+export function findCourseById(id: number) {
+  return mockCourses.get(id);
+}
 
 export function findCoursesGroupedByStatus(user: MockUser, maxLength: number) {
   const conducted: CourseListItemDto[] = [];

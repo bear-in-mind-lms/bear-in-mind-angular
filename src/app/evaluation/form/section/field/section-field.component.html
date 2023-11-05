@@ -1,0 +1,30 @@
+<h3>{{field.label}}</h3>
+<ng-container [ngSwitch]="field.fieldType">
+  <ng-container *ngSwitchCase="FieldType.checkbox">
+    <p *ngFor="let option of field.options; index as i">
+      <mat-checkbox [formControl]="formControls[i]">{{option}}</mat-checkbox>
+    </p>
+  </ng-container>
+
+  <mat-form-field *ngSwitchCase="FieldType.number" class="full-width">
+    <input type="number" matInput [formControl]="formControls[0]" />
+  </mat-form-field>
+
+  <mat-radio-group *ngSwitchCase="FieldType.radio" [formControl]="formControls[0]">
+    <mat-radio-button *ngFor="let option of field.options"
+                      [value]="option"
+                      class="block">
+      {{option}}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field *ngSwitchCase="FieldType.select">
+    <mat-select [formControl]="formControls[0]">
+      <mat-option *ngFor="let option of field.options" [value]="option">{{option}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngSwitchCase="FieldType.text" class="full-width">
+    <input type="text" matInput [formControl]="formControls[0]" />
+  </mat-form-field>
+</ng-container>

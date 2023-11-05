@@ -11,8 +11,8 @@ import { CreateCourseDto } from '../../app/course/creator/create-course-dto';
 import { LocaleConfig } from '../../locale/locale-config';
 import { toPageApiResponse } from '../mock-api-response';
 import { findUserById } from '../user/mock-user-repository';
-import { MockCourse, MockCourseStatus } from './mock-course';
-import { isCourseCompleted, mockCourses } from './mock-course-data';
+import { isCourseCompleted, MockCourse, MockCourseStatus } from './mock-course';
+import { mockCourses } from './mock-course-data';
 import {
   findCoursesGroupedByStatus,
   findCourseStatusOfUser,
@@ -51,8 +51,8 @@ export function createCourse(
 }
 
 export function findCourseMainViewDto(
-  loggedInUserId: number,
   maxLength: number,
+  loggedInUserId: number,
 ): ApiResponse<CourseMainViewDto> {
   const user = findUserById(loggedInUserId)!;
   const courses = findCoursesGroupedByStatus(user, maxLength);

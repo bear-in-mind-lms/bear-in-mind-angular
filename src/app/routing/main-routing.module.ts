@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EnabledModule } from '../../environments/environment';
 import { AppRoute } from './app-route';
 
 const routes: Routes = [
@@ -27,6 +28,17 @@ const routes: Routes = [
     loadChildren: () =>
       import('./user-routing.module').then((m) => m.UserRoutingModule),
   },
+  ...(EnabledModule.evaluation
+    ? [
+        {
+          path: AppRoute.evaluation.routePath,
+          loadChildren: () =>
+            import('./evaluation-routing.module').then(
+              (m) => m.EvaluationRoutingModule,
+            ),
+        },
+      ]
+    : []),
   {
     path: '',
     pathMatch: 'full',

@@ -19,6 +19,10 @@ a.mat-mdc-chip * {
   font-weight: bold !important;
 }
 
+.block {
+  display: block;
+}
+
 .full-width {
   width: 100%;
 }
@@ -29,6 +33,10 @@ a.mat-mdc-chip * {
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 
 .no-before-content::before {

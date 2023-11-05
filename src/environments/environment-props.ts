@@ -1,8 +1,9 @@
 import { EnvironmentProviders, Provider } from '@angular/core';
 
 export type EnvironmentProps = {
-  production: boolean;
-  apiUrl: string;
-  apiService: any;
-  providers: (Provider | EnvironmentProviders)[];
+  readonly production: boolean;
+  readonly apiUrl: string;
+  readonly apiService: any;
+  readonly evaluationApiService: any;
+  readonly providers: (Provider | EnvironmentProviders)[];
 };

@@ -13,6 +13,16 @@ ng serve --configuration mock
 
 You can log in to any user defined in the [mock-user-data.ts][users] file. Each user's password is `password`.
 
+## Optional modules
+
+In Bear in Mind, we care about modularity, and thus the ability to run only the microservices you need. All modules are
+enabled by default in the frontend application. To disable one of them, all you need to do is to edit
+the environment file for each configuration according to the table below.
+
+| Module     | Enabled                                                                               | Disabled                                                                               |
+|------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| Evaluation | `evaluationApiService: EnabledEvaluationApiService`<br>`EnabledModule.evaluation = 1` | `evaluationApiService: DisabledEvaluationApiService`<br>`EnabledModule.evaluation = 0` |
+
 ## Security
 
 ### Authorization
@@ -78,6 +88,8 @@ All illustrations by [storyset][author-stories] on Freepik.
   on [Unsplash][unsplash-this-is-engineering]
 
 [users]: https://github.com/bear-in-mind-lms/bear-in-mind-angular/blob/main/src/mock/user/mock-user-data.ts
+
+[environment]: https://github.com/bear-in-mind-lms/bear-in-mind-angular/blob/main/src/environments/environment.ts
 
 [contributing]: https://github.com/bear-in-mind-lms/bear-in-mind-core/blob/main/CONTRIBUTING.md
 

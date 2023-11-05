@@ -6,13 +6,16 @@ $-app-bar-color: #0d52bf;
 
 $-app-theme-primary-palette: mat.define-palette(mat.$blue-palette);
 $-app-theme-accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$-app-theme-warn-palette: mat.define-palette(mat.$red-palette);
+$-app-theme-error-palette: mat.define-palette(mat.$red-palette);
+
+$-app-theme-success-palette: mat.define-palette(mat.$green-palette);
+$-app-theme-warn-palette: mat.define-palette(mat.$orange-palette);
 
 $-app-theme: mat.define-light-theme((
   color: (
     primary: $-app-theme-primary-palette,
     accent: $-app-theme-accent-palette,
-    warn: $-app-theme-warn-palette,
+    warn: $-app-theme-error-palette,
   )
 ));
 
@@ -62,10 +65,22 @@ $-app-typography: mat.define-typography-config(
 
 .mat-mdc-snack-bar-container {
   &.snackbar-error {
-    --mdc-snackbar-container-color: #{mat.get-color-from-palette($-app-theme-warn-palette)};
+    --mdc-snackbar-container-color: #{mat.get-color-from-palette($-app-theme-error-palette)};
   }
 }
 
 .list-item-button .mat-mdc-list-item-title {
   color: mat.get-color-from-palette($-app-theme-primary-palette) !important;
+}
+
+.success {
+  color: mat.get-color-from-palette($-app-theme-success-palette) !important;
+}
+
+.warn {
+  color: mat.get-color-from-palette($-app-theme-warn-palette) !important;
+}
+
+.error {
+  color: mat.get-color-from-palette($-app-theme-error-palette) !important;
 }
