@@ -1,10 +1,6 @@
 @use '../../../colors' as color;
 
-.bottom-navigation {
-  position: fixed;
-  bottom: 0;
-  z-index: 1000;
-  width: 100%;
+.main-bottom-navigation {
   display: flex;
   align-items: center;
   justify-content: space-around;
