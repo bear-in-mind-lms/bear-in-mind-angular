@@ -5,7 +5,7 @@
         <app-list-item *ngFor="let member of response.content!.members"
                        [item]="member"
                        [route]="userRoute"
-                       avatarPlaceholder/>
+                       avatarPlaceholder />
       </mat-action-list>
     </app-page-content>
     <app-app-bar [previousLocation]="previousLocation"
@@ -17,8 +17,8 @@
             mat-fab
             extended
             color="primary"
-            [disabled]="!(joinSubscription?.closed ?? true)"
-            (click)="joinGroup()">
+            [disabled]="isJoining()"
+            (click)="join()">
       <mat-icon>person_add_alt</mat-icon>
       <span i18n="@@joinThisGroup">*</span>
     </button>

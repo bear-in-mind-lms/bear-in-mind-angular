@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Moment } from 'moment';
 import { Subscription } from 'rxjs';
@@ -9,6 +10,7 @@ import { ApiErrorSnackBar } from '../../../api/api-error-snack-bar/api-error-sna
 import { CourseApiService } from '../../../api/course/course-api.service';
 import { AppRoute, AppRouteParam } from '../../../routing/app-route';
 import { DateTimeFormFieldComponent } from '../../../shared/date-time-form-field/date-time-form-field.component';
+import { ConfirmationDialog } from '../../../shared/dialog/confirmation/confirmation-dialog.component';
 import { injectPathVariables } from '../../../shared/path-utils';
 import { convertLocaleFieldTextsMapToIndexSignature } from '../../../shared/translation-utils';
 import { TranslationsFormFieldComponent } from '../../../shared/translations-form-field/translations-form-field.component';
@@ -40,19 +42,25 @@ function createIsoDateTimeStringFromControls(
   imports: [
     ReactiveFormsModule,
     MatButtonModule,
+    MatDialogModule,
     TranslationsFormFieldComponent,
     DateTimeFormFieldComponent,
   ],
   templateUrl: './course-creator-form.component.html',
   styleUrls: ['./course-creator-form.component.scss'],
 })
-export class CourseCreatorFormComponent {
-  readonly translationFieldLabelMap = new Map<TranslationField, string>([
+export class CourseCreatorFormComponent implements OnDestroy {
+  private subscriptions: Subscription[] = [];
+
+  protected readonly translationFieldLabelMap = new Map<
+    TranslationField,
+    string
+  >([
     ['name', $localize`:@@name:`],
     ['description', $localize`:@@description:`],
   ]);
 
-  readonly courseForm = new FormGroup({
+  protected readonly courseForm = new FormGroup({
     translations: new FormControl<Map<string, Map<TranslationField, string>>>(
       new Map([[LocaleConfig.serverLocale, new Map()]]),
     ),
@@ -64,31 +72,61 @@ export class CourseCreatorFormComponent {
     registrationClosingTime: new FormControl<string>(DEFAULT_TIME),
   });
 
-  createCourseSubscription?: Subscription;
-
   constructor(
     private readonly router: Router,
     private readonly courseApi: CourseApiService,
+    private readonly dialog: MatDialog,
     private readonly snackBar: ApiErrorSnackBar,
   ) {}
 
-  publish() {
-    this.createCourseSubscription = this.courseApi
-      .createCourse(this.createCourseDto())
-      .subscribe((response) => {
-        if (response.isSuccess()) {
-          this.router.navigateByUrl(
-            injectPathVariables(AppRoute.course.routerLink, {
-              [AppRouteParam.id]: response.content!,
-            }),
-            {
-              replaceUrl: true,
-            },
-          );
-        } else {
-          this.snackBar.open(response.error!);
+  ngOnDestroy() {
+    for (const subscription of this.subscriptions) {
+      subscription.unsubscribe();
+    }
+  }
+
+  protected publish() {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      data: {
+        title: $localize`:@@confirmCourseCreationTitle:`,
+        content: $localize`:@@confirmCourseCreationContent:`,
+        negativeButtonTitle: $localize`:@@cancel:`,
+        positiveButtonTitle: $localize`:@@publish:`,
+      },
+    });
+
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result !== undefined) {
+          this.createCourse();
         }
-      });
+      }),
+    );
+  }
+
+  protected isPublishing() {
+    return this.subscriptions.some((subscription) => !subscription.closed);
+  }
+
+  private createCourse() {
+    this.subscriptions.push(
+      this.courseApi
+        .createCourse(this.createCourseDto())
+        .subscribe((response) => {
+          if (response.isSuccess()) {
+            this.router.navigateByUrl(
+              injectPathVariables(AppRoute.course.routerLink, {
+                [AppRouteParam.id]: response.content!,
+              }),
+              {
+                replaceUrl: true,
+              },
+            );
+          } else {
+            this.snackBar.open(response.error!);
+          }
+        }),
+    );
   }
 
   private createCourseDto(): CreateCourseDto {
