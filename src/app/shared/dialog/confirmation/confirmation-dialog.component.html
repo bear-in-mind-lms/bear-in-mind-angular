@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<mat-dialog-content *ngIf="data.content">
+  <p>{{data.content}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">{{data.negativeButtonTitle}}</button>
+  <button mat-button color="primary" [mat-dialog-close]="true">{{data.positiveButtonTitle}}</button>
+</mat-dialog-actions>

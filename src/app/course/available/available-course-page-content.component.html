@@ -1,6 +1,10 @@
-<app-course-details-list [course]="course"/>
-<app-course-lesson-card *ngFor="let lesson of course.lessons" [lesson]="lesson" disabled/>
-<button mat-fab extended color="primary" [disabled]="!(enrollSubscription?.closed ?? true)" (click)="enrollInCourse()">
+<app-course-details-list [course]="course" />
+<app-course-lesson-card *ngFor="let lesson of course.lessons" [lesson]="lesson" disabled />
+<button mat-fab
+        extended
+        color="primary"
+        [disabled]="isEnrolling()"
+        (click)="enroll()">
   <mat-icon>drive_file_rename_outline</mat-icon>
   <span i18n="@@enrollInThisCourse">*</span>
 </button>
