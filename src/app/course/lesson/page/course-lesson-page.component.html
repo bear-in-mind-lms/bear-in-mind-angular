@@ -9,8 +9,18 @@
         </mat-list-item>
       </mat-list>
       <div *ngFor="let part of response.content!.parts" class="parts-container">
-        <app-course-lesson-part [lessonPart]="part"/>
+        <app-course-lesson-part [lessonPart]="part" />
       </div>
+      <ng-container *ngIf="courseLessonQuizzesDtoObservable | async as quizzesResponse">
+        <ng-container *ngIf="quizzesResponse.isSuccess() && quizzesResponse.content!.length !== 0">
+          <app-page-section sectionTitle="*" i18n-sectionTitle="@@evaluation" />
+          <mat-action-list>
+            <app-quiz-list-item *ngFor="let quiz of quizzesResponse.content!"
+                                [quiz]="quiz"
+                                [courseLessonId]="courseLessonId" />
+          </mat-action-list>
+        </ng-container>
+      </ng-container>
     </app-page-content>
     <app-app-bar [previousLocation]="previousLocation">
       {{response.content!.topic}}

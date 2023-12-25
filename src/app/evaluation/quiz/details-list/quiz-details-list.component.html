@@ -1,0 +1,37 @@
+<mat-list>
+  <mat-list-item>
+    <mat-icon matListItemIcon>{{statusIcon}}</mat-icon>
+    <span matListItemTitle i18n="@@status">*</span>
+    <span matListItemLine>{{status}}</span>
+  </mat-list-item>
+
+  <mat-list-item>
+    <mat-icon matListItemIcon>format_list_numbered</mat-icon>
+    <span matListItemTitle i18n="@@questionCount">*</span>
+    <span matListItemLine>{{quiz.questionCount}}</span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="quiz.grade">
+    <mat-icon matListItemIcon>grade</mat-icon>
+    <span matListItemTitle i18n="@@grade">*</span>
+    <span matListItemLine>{{quiz.grade}}</span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="quiz.result">
+    <mat-icon matListItemIcon>format_list_numbered_rtl</mat-icon>
+    <span matListItemTitle i18n="@@points">*</span>
+    <span matListItemLine>{{quiz.result}} / {{quiz.maxPoints}}</span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="quiz.submittedAt">
+    <mat-icon matListItemIcon>event</mat-icon>
+    <span matListItemTitle i18n="@@submissionTime">*</span>
+    <span matListItemLine>{{quiz.submittedAt | date: 'medium'}}</span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="quiz.evaluatedAt">
+    <mat-icon matListItemIcon>event_available</mat-icon>
+    <span matListItemTitle i18n="@@evaluationTime">*</span>
+    <span matListItemLine>{{quiz.evaluatedAt | date: 'medium'}}</span>
+  </mat-list-item>
+</mat-list>

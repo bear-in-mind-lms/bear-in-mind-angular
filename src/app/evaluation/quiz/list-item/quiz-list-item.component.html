@@ -1,0 +1,8 @@
+<a [routerLink]="quizRoute">
+  <mat-list-item [disabled]="quizRoute === undefined">
+    <mat-icon matListItemIcon [class]="iconClass">{{icon}}</mat-icon>
+    <div matListItemTitle>{{quiz.name}}</div>
+    <div matListItemLine>{{status}}{{result}}</div>
+    <div *ngIf="quiz.userName" matListItemLine>{{quiz.userName}}</div>
+  </mat-list-item>
+</a>

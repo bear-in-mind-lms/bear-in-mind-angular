@@ -1,11 +1,11 @@
 import { ApiResponse } from '../../../app/api/api-response';
 import { CourseLessonViewDto } from '../../../app/course/lesson/course-lesson-view-dto';
-import { mockLessons } from './mock-course-lesson-data';
+import { findCourseLessonById } from './mock-course-lesson-repository';
 
 export function findCourseLessonViewDtoBy(
   id: number,
 ): ApiResponse<CourseLessonViewDto> {
-  const lesson = mockLessons.get(id);
+  const lesson = findCourseLessonById(id);
   if (lesson === undefined) {
     return ApiResponse.success();
   }

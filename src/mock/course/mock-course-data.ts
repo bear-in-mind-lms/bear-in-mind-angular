@@ -2,12 +2,6 @@ import { mockUsers } from '../user/mock-user-data';
 import { mockLessons } from './lesson/mock-course-lesson-data';
 import { MockCourse } from './mock-course';
 
-export function isCourseCompleted(course: MockCourse) {
-  return course.endDateTime === undefined
-    ? false
-    : Date.parse(course.endDateTime) <= Date.now();
-}
-
 function findLessonsByCourseId(courseId: number) {
   return [...mockLessons.values()].filter(
     (lesson) => lesson.courseId === courseId,

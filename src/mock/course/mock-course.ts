@@ -20,3 +20,9 @@ export const enum MockCourseStatus {
   AVAILABLE,
   COMPLETED,
 }
+
+export function isCourseCompleted(course: MockCourse) {
+  return course.endDateTime === undefined
+    ? false
+    : Date.parse(course.endDateTime) <= Date.now();
+}

@@ -9,6 +9,7 @@ const ERROR_CODE_CONNECTION_FAILED = 'CONNECTION_FAILED';
 const ERROR_CODE_INCORRECT_CREDENTIALS = 'INCORRECT_CREDENTIALS';
 export const ERROR_CODE_NOT_FOUND = 'NOT_FOUND';
 const ERROR_CODE_UNEXPECTED = 'UNEXPECTED';
+const ERROR_CODE_MODULE_DISABLED = 'MODULE_DISABLED';
 
 export const connectionFailedError: ApiError = {
   code: ERROR_CODE_CONNECTION_FAILED,
@@ -20,6 +21,10 @@ export const incorrectCredentialsError: ApiError = {
 
 export const unexpectedServerError: ApiError = {
   code: ERROR_CODE_UNEXPECTED,
+} as const;
+
+export const moduleDisabledError: ApiError = {
+  code: ERROR_CODE_MODULE_DISABLED,
 } as const;
 
 export function getApiErrorMessage(error: ApiError) {

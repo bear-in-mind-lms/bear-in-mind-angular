@@ -1,0 +1,10 @@
+.quiz-bottom-navigation {
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  > * {
+    margin-right: 16px !important;
+  }
+}

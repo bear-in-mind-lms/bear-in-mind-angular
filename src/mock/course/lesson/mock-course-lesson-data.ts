@@ -33,6 +33,14 @@ export const mockLessons = new Map<number, MockCourseLesson>([
           attachments:
             ':https://www.oed.com/\nModern English-Old High German dictionary:https://www.koeblergerhard.de/germanistischewoerterbuecher/althochdeutscheswoerterbuch/neuenglisch-ahd.pdf',
         },
+        {
+          text: '<img width="172" height="258" alt="Coffee picture" src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" />',
+        },
+        {
+          text: '<video width="100%" controls><source src="https://static.videezy.com/system/resources/previews/000/000/080/original/CoffeeCup.mp4" type="video/mp4"></video>',
+          attachments:
+            'Source:https://www.videezy.com/food-and-drink/80-coffee-cup-stock-video-in-high-definition',
+        },
       ],
     },
   ],

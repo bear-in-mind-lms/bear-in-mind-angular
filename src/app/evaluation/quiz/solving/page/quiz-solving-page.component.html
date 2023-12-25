@@ -1,0 +1,35 @@
+<ng-container *ngIf="quizSolvingViewDtoObservable | async as response; else loading">
+  <ng-container *ngIf="response.isSuccess()">
+    <app-page-content appBar topMargin horizontalMargin bottomNavigation>
+      <mat-tab-group [selectedIndex]="selectedSectionIndex"
+                     (selectedIndexChange)="onSelectedIndexChange($event)">
+        <mat-tab *ngFor="let section of response.content!.sections; let index = index" [label]="section.name">
+          <ng-template matTabContent>
+            <app-section-field *ngFor="let field of section.fields"
+                               [field]="field"
+                               [formControls]="getFieldFormControls(field.id)" />
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </app-page-content>
+    <app-app-bar>
+      {{response.content!.name}}
+    </app-app-bar>
+    <div appBottomNavigation class="quiz-bottom-navigation">
+      <span *ngIf="questionsLeftMessage !== ''" class="mat-subtitle-1 no-margin">{{questionsLeftMessage}}</span>
+      <button mat-raised-button
+              [color]="questionsLeft === 0 ? 'primary' : 'warn'"
+              matTooltip="*"
+              i18n-matTooltip="@@youDidNotAnswerAllQuestions"
+              [matTooltipDisabled]="questionsLeft === 0"
+              [disabled]="isSubmitting"
+              (click)="submit()"
+              i18n="@@submit">
+        *
+      </button>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>

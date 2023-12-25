@@ -13,25 +13,29 @@ export class HttpApiService extends ApiService {
     super();
   }
 
-  get<ResponseType>(url: UrlType): Observable<ApiResponse<ResponseType>> {
+  override get<ResponseType>(
+    url: UrlType,
+  ): Observable<ApiResponse<ResponseType>> {
     return this.request('GET', url);
   }
 
-  post<ResponseType>(
+  override post<ResponseType>(
     url: UrlType,
     body?: BodyType,
   ): Observable<ApiResponse<ResponseType>> {
     return this.request('POST', url, body);
   }
 
-  put<ResponseType>(
+  override put<ResponseType>(
     url: UrlType,
     body?: BodyType,
   ): Observable<ApiResponse<ResponseType>> {
     return this.request('PUT', url, body);
   }
 
-  delete<ResponseType>(url: UrlType): Observable<ApiResponse<ResponseType>> {
+  override delete<ResponseType>(
+    url: UrlType,
+  ): Observable<ApiResponse<ResponseType>> {
     return this.request('DELETE', url);
   }
 

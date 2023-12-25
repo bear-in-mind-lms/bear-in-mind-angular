@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { ApiService } from './api/api-service';
+import { EvaluationApiService } from './api/evaluation/evaluation-api.service';
 import { CacheInterceptor } from './api/interceptor/cache-interceptor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -48,6 +49,10 @@ import { TimeConfig } from './shared/time-config';
     {
       provide: ApiService,
       useClass: environment.apiService,
+    },
+    {
+      provide: EvaluationApiService,
+      useClass: environment.evaluationApiService,
     },
     {
       provide: HTTP_INTERCEPTORS,

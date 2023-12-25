@@ -1,7 +1,13 @@
 const PARAM_ID = 'id';
+const PARAM_QUIZ_ID = 'quizId';
+const PARAM_USER_ID = 'userId';
+const PARAM_COURSE_LESSON_ID = 'courseLessonId';
 
 export const AppRouteParam = {
   id: PARAM_ID,
+  quizId: PARAM_QUIZ_ID,
+  userId: PARAM_USER_ID,
+  courseLessonId: PARAM_COURSE_LESSON_ID,
 } as const;
 
 interface Paths {
@@ -115,25 +121,51 @@ const availableUserGroups: Paths = {
   routerLink: `${userGroups.routerLink}/available`,
 };
 
+// Evaluation
+
+const evaluation: Paths = {
+  routePath: 'evaluation',
+  routerLink: '/evaluation',
+};
+
+const quiz: Paths = {
+  routePath: `quizzes/:${PARAM_ID}`,
+  routerLink: `${evaluation.routerLink}/quizzes/:${PARAM_ID}`,
+};
+
+const solveQuiz: Paths = {
+  routePath: `quizzes/:${PARAM_ID}/solve`,
+  routerLink: `${evaluation.routerLink}/quizzes/:${PARAM_ID}/solve`,
+};
+
+const quizAnswers: Paths = {
+  routePath: `lessons/:${PARAM_COURSE_LESSON_ID}/quizzes/:${PARAM_QUIZ_ID}/students/:${PARAM_USER_ID}/answers`,
+  routerLink: `${evaluation.routerLink}/lessons/:${PARAM_COURSE_LESSON_ID}/quizzes/:${PARAM_QUIZ_ID}/students/:${PARAM_USER_ID}/answers`,
+};
+
 export const AppRoute = {
-  activeCourses: activeCourses,
-  availableCourses: availableCourses,
-  availableUserGroups: availableUserGroups,
-  completedCourses: completedCourses,
-  conductedCourses: conductedCourses,
-  course: course,
-  courseLesson: courseLesson,
-  courses: courses,
-  createCourse: createCourse,
-  createUserGroup: createUserGroup,
+  activeCourses,
+  availableCourses,
+  availableUserGroups,
+  completedCourses,
+  conductedCourses,
+  course,
+  courseLesson,
+  courses,
+  createCourse,
+  createUserGroup,
   defaultMainSubpage: courses,
-  groupMembers: groupMembers,
-  login: login,
-  main: main,
-  registeredUserGroups: registeredUserGroups,
-  students: students,
-  teachers: teachers,
-  user: user,
-  userGroup: userGroup,
-  users: users,
+  evaluation,
+  groupMembers,
+  login,
+  main,
+  quiz,
+  quizAnswers,
+  registeredUserGroups,
+  solveQuiz,
+  students,
+  teachers,
+  user,
+  userGroup,
+  users,
 } as const;

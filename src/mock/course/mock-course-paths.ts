@@ -23,8 +23,8 @@ export const COURSE_PATH_REQUEST_MAP = new Map<
     'GET /course/main-view',
     (args) =>
       findCourseMainViewDto(
-        args.deps.loggedInUser.userId,
         args.params!['listLength'] as number,
+        args.deps.loggedInUser.userId,
       ),
   ],
   [

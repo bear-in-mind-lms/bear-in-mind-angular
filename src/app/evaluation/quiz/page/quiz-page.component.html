@@ -1,0 +1,21 @@
+<ng-container *ngIf="quizViewDtoObservable | async as response; else loading">
+  <ng-container *ngIf="response.isSuccess()">
+    <app-page-content appBar horizontalMargin>
+      <app-quiz-details-list [quiz]="response.content!" />
+      <button *ngIf="response.content!.status === QuizStatus.toDo"
+              mat-raised-button
+              class="full-width"
+              color="primary"
+              (click)="solve()"
+              i18n="@@solve">
+        *
+      </button>
+    </app-page-content>
+    <app-app-bar [previousLocation]="previousLocation">
+      {{response.content!.name}}
+    </app-app-bar>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>
