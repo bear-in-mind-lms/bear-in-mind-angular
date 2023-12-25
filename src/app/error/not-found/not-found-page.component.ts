@@ -10,6 +10,6 @@ import { ErrorPageComponent } from '../error-page.component';
   templateUrl: './not-found-page.component.html',
 })
 export class NotFoundPageComponent {
-  readonly notFoundImage = 'assets/graphics/not-found.png';
-  readonly gradientColors = ['#311b92', '#7e57c2'];
+  protected readonly notFoundImage = 'assets/graphics/not-found.png';
+  protected readonly gradientColors = ['#311b92', '#7e57c2'];
 }

@@ -9,7 +9,7 @@
                                         [items]="courseMainViewDto.conductedCourses"
                                         [route]="courseRoute"
                                         [imagePlaceholder]="courseImagePlaceholder"
-                                        [emptyContentPlaceholder]="emptyConductedCoursesPlaceholder"/>
+                                        [emptyContentPlaceholder]="emptyConductedCoursesPlaceholder" />
   </app-page-section>
 
   <mat-action-list *ngIf="hasTeacherRole">
@@ -29,7 +29,7 @@
                                         [items]="courseMainViewDto.activeCourses"
                                         [route]="courseRoute"
                                         [imagePlaceholder]="courseImagePlaceholder"
-                                        [emptyContentPlaceholder]="emptyActiveCoursesPlaceholder"/>
+                                        [emptyContentPlaceholder]="emptyActiveCoursesPlaceholder" />
   </app-page-section>
 
   <app-page-section sectionTitle="*"
@@ -41,7 +41,7 @@
                                         [items]="courseMainViewDto.availableCourses"
                                         [route]="courseRoute"
                                         [imagePlaceholder]="courseImagePlaceholder"
-                                        [emptyContentPlaceholder]="emptyAvailableCoursesPlaceholder"/>
+                                        [emptyContentPlaceholder]="emptyAvailableCoursesPlaceholder" />
   </app-page-section>
 
   <app-page-section sectionTitle="*"
@@ -53,7 +53,7 @@
                                         [items]="courseMainViewDto.completedCourses"
                                         [route]="courseRoute"
                                         [imagePlaceholder]="courseImagePlaceholder"
-                                        [emptyContentPlaceholder]="emptyCompletedCoursesPlaceholder"/>
+                                        [emptyContentPlaceholder]="emptyCompletedCoursesPlaceholder" />
   </app-page-section>
 </app-page-content>
 <app-app-bar>

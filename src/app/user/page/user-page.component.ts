@@ -51,24 +51,25 @@ import { UserViewDto } from '../user-view-dto';
   styleUrls: ['./user-page.component.scss'],
 })
 export class UserPageComponent {
-  readonly previousLocation = AppRoute.users.routerLink;
-  readonly courseRoute = AppRoute.course.routerLink;
-  readonly userGroupRoute = AppRoute.userGroup.routerLink;
+  private userId!: number;
 
-  readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
-  readonly userGroupImagePlaceholder = UserConfig.imagePlaceholder;
-  readonly emptyCoursesPlaceholder =
+  protected readonly previousLocation = AppRoute.users.routerLink;
+  protected readonly courseRoute = AppRoute.course.routerLink;
+  protected readonly userGroupRoute = AppRoute.userGroup.routerLink;
+
+  protected readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
+  protected readonly userGroupImagePlaceholder = UserConfig.imagePlaceholder;
+  protected readonly emptyCoursesPlaceholder =
     'assets/graphics/empty-available-courses.png';
-  readonly emptyGroupsPlaceholder =
+  protected readonly emptyGroupsPlaceholder =
     'assets/graphics/empty-available-groups.png';
 
-  userId!: number;
-  userViewDtoObservable!: Observable<ApiResponse<UserViewDto>>;
+  protected userViewDtoObservable!: Observable<ApiResponse<UserViewDto>>;
 
-  userName!: string;
-  userImage?: string;
-  commonCourses!: CourseListItemDto[];
-  commonGroups!: UserGroupListItemDto[];
+  protected userName!: string;
+  protected userImage?: string;
+  protected commonCourses!: CourseListItemDto[];
+  protected commonGroups!: UserGroupListItemDto[];
 
   constructor(
     private readonly router: Router,

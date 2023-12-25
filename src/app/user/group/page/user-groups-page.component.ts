@@ -30,25 +30,28 @@ import { UserMainViewDto } from '../../user-main-view-dto';
   templateUrl: './user-groups-page.component.html',
 })
 export class UserGroupsPageComponent implements OnInit, OnDestroy {
-  readonly userGroupRoute = AppRoute.userGroup.routerLink;
-  readonly createUserGroupRoute = AppRoute.createUserGroup.routerLink;
+  private userMainViewDtoSubscription?: Subscription;
 
-  readonly registeredUserGroupsRoute = AppRoute.registeredUserGroups.routerLink;
-  readonly availableUserGroupsRoute = AppRoute.availableUserGroups.routerLink;
-  readonly groupMembersRoute = AppRoute.groupMembers.routerLink;
-  readonly teachersRoute = AppRoute.teachers.routerLink;
-  readonly studentsRoute = AppRoute.students.routerLink;
+  protected readonly userGroupRoute = AppRoute.userGroup.routerLink;
+  protected readonly createUserGroupRoute = AppRoute.createUserGroup.routerLink;
 
-  readonly userImagePlaceholder = UserConfig.imagePlaceholder;
-  readonly emptyRegisteredUserGroupsPlaceholder =
+  protected readonly registeredUserGroupsRoute =
+    AppRoute.registeredUserGroups.routerLink;
+  protected readonly availableUserGroupsRoute =
+    AppRoute.availableUserGroups.routerLink;
+  protected readonly groupMembersRoute = AppRoute.groupMembers.routerLink;
+  protected readonly teachersRoute = AppRoute.teachers.routerLink;
+  protected readonly studentsRoute = AppRoute.students.routerLink;
+
+  protected readonly userImagePlaceholder = UserConfig.imagePlaceholder;
+  protected readonly emptyRegisteredUserGroupsPlaceholder =
     'assets/graphics/empty-registered-groups.png';
-  readonly emptyAvailableUserGroupsPlaceholder =
+  protected readonly emptyAvailableUserGroupsPlaceholder =
     'assets/graphics/empty-available-groups.png';
 
-  userMainViewDtoSubscription!: Subscription;
-  userMainViewDto?: UserMainViewDto;
+  protected userMainViewDto?: UserMainViewDto;
 
-  hasTeacherRole!: boolean;
+  protected hasTeacherRole!: boolean;
 
   constructor(
     private readonly loggedInUser: LoggedInUserService,
@@ -77,6 +80,6 @@ export class UserGroupsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userMainViewDtoSubscription.unsubscribe();
+    this.userMainViewDtoSubscription?.unsubscribe();
   }
 }

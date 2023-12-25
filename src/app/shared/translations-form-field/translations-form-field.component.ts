@@ -34,10 +34,10 @@ export class TranslationsFormFieldComponent implements OnInit, OnDestroy {
     return this.tabs[this.selected.value!];
   }
 
-  readonly tabs: string[] = [];
-  readonly selected = new FormControl(0);
+  protected readonly tabs: string[] = [];
+  protected readonly selected = new FormControl(0);
 
-  readonly translationFieldFormControlMap: Map<
+  protected readonly translationFieldFormControlMap: Map<
     string,
     FormControl<string | null>
   > = new Map();
@@ -75,7 +75,7 @@ export class TranslationsFormFieldComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSelectedIndexChange(index: number) {
+  protected onSelectedIndexChange(index: number) {
     this.selected.setValue(index);
     const translationFieldTextMap =
       this.getTranslationFieldTextMapByIndex(index);
@@ -86,19 +86,21 @@ export class TranslationsFormFieldComponent implements OnInit, OnDestroy {
     }
   }
 
-  addLanguage() {
+  protected addLanguage() {
     const dialogRef = this.dialog.open(LanguagePickerDialog, {
       data: {
         excludedLanguages: [...this.translationsFormControl.value!.keys()],
       },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result !== undefined) {
-        this.translationsFormControl.value!.set(result, new Map());
-        this.tabs.push(result);
-      }
-    });
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result !== undefined) {
+          this.translationsFormControl.value!.set(result, new Map());
+          this.tabs.push(result);
+        }
+      }),
+    );
   }
 
   private getTranslationFieldTextMapByIndex(index: number) {

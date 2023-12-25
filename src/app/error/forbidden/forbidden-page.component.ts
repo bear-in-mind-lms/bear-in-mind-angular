@@ -10,6 +10,6 @@ import { ErrorPageComponent } from '../error-page.component';
   templateUrl: './forbidden-page.component.html',
 })
 export class ForbiddenPageComponent {
-  readonly forbiddenImage = 'assets/graphics/forbidden.png';
-  readonly gradientColors = ['#ffee58', '#f9a825'];
+  protected readonly forbiddenImage = 'assets/graphics/forbidden.png';
+  protected readonly gradientColors = ['#ffee58', '#f9a825'];
 }

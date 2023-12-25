@@ -15,8 +15,8 @@ export class TextAvatarComponent implements OnInit {
   @Input({ required: true }) text!: string;
   @Input({ required: true }) size!: number;
 
-  backgroundColor!: string;
-  fontSize!: string;
+  protected backgroundColor!: string;
+  protected fontSize!: string;
 
   ngOnInit() {
     this.initBackgroundColor(this.text);

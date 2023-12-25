@@ -16,6 +16,6 @@ import { BottomNavigationDirective } from '../../shared/bottom-navigation/bottom
   styleUrls: ['./main-bottom-navigation.component.scss'],
 })
 export class MainBottomNavigationComponent {
-  readonly coursesRoute = AppRoute.courses.routerLink;
-  readonly usersRoute = AppRoute.users.routerLink;
+  protected readonly coursesRoute = AppRoute.courses.routerLink;
+  protected readonly usersRoute = AppRoute.users.routerLink;
 }

@@ -15,7 +15,7 @@ export class CourseLessonApiService {
   findCourseLessonViewDtoBy(id: number) {
     return this.api.get<CourseLessonViewDto>({
       path: path('/lesson/:id'),
-      pathVariables: { id: id },
+      pathVariables: { id },
     });
   }
 }

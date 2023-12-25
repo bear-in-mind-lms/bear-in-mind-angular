@@ -38,12 +38,12 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private breakpointSubscription?: Subscription;
   private routerSubscription?: Subscription;
 
-  sideNavigation = true;
-  hasBottomNavigation = false;
+  protected sideNavigation = true;
+  protected hasBottomNavigation = false;
 
   @ViewChild('content', { read: ElementRef }) content!: ElementRef<HTMLElement>;
 
-  contentPortal!: DomPortal;
+  protected contentPortal!: DomPortal;
 
   constructor(
     private readonly breakpointObserver: BreakpointObserver,

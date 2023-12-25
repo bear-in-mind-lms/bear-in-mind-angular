@@ -25,7 +25,7 @@ import { CourseLessonListItemDto } from '../course-lesson-list-item-dto';
 export class CourseLessonCardComponent implements OnInit {
   @Input({ required: true }) lesson!: CourseLessonListItemDto;
 
-  isDisabled = false;
+  protected isDisabled = false;
 
   @Input()
   get disabled() {
@@ -36,8 +36,8 @@ export class CourseLessonCardComponent implements OnInit {
     this.isDisabled = coerceBooleanProperty(value);
   }
 
-  itemRoute?: string;
-  isTooltipDisabled!: boolean;
+  protected itemRoute?: string;
+  protected isTooltipDisabled!: boolean;
 
   ngOnInit() {
     if (!this.isDisabled) {

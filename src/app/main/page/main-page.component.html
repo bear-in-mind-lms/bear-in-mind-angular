@@ -4,7 +4,7 @@
 
 <ng-template #bottomNavigation>
   <ng-template [cdkPortalOutlet]="contentPortal"></ng-template>
-  <app-main-bottom-navigation *ngIf="hasBottomNavigation"/>
+  <app-main-bottom-navigation *ngIf="hasBottomNavigation" />
 </ng-template>
 
 <app-page-content #content [bottomNavigation]="!sideNavigation && hasBottomNavigation">

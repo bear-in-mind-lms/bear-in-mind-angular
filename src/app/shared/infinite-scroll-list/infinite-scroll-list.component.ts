@@ -1,9 +1,9 @@
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput } from '@angular/cdk/coercion';
 import { NgForOf } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Page } from '../../api/page';
 import { ListItemDto } from '../list-item-dto';
 import { ListItemComponent } from '../list-item/list-item.component';
@@ -17,11 +17,10 @@ import { ListItemComponent } from '../list-item/list-item.component';
 export class InfiniteScrollListComponent implements OnInit, OnDestroy {
   private currentPage = 0;
   private totalPages = 1;
-  readonly items: ListItemDto[] = [];
 
-  readonly subscriptions: Subscription[] = [];
+  private readonly subscriptions: Subscription[] = [];
 
-  hasAvatarPlaceholder = false;
+  protected readonly items: ListItemDto[] = [];
 
   @Input({ required: true }) fetchPage!: (
     page: number,
@@ -29,14 +28,7 @@ export class InfiniteScrollListComponent implements OnInit, OnDestroy {
   @Input({ required: true }) route!: string;
   @Input() imagePlaceholder?: string;
 
-  @Input()
-  get avatarPlaceholder() {
-    return this.hasAvatarPlaceholder;
-  }
-
-  set avatarPlaceholder(value: BooleanInput) {
-    this.hasAvatarPlaceholder = coerceBooleanProperty(value);
-  }
+  @Input() avatarPlaceholder: BooleanInput;
 
   ngOnInit() {
     this.fetchNextPage();
@@ -48,16 +40,14 @@ export class InfiniteScrollListComponent implements OnInit, OnDestroy {
     }
   }
 
-  fetchNextPage() {
+  protected fetchNextPage() {
     if (this.currentPage < this.totalPages) {
-      const observablePage = this.fetchPage(this.currentPage++).pipe(
-        tap((page) => {
+      this.subscriptions.push(
+        this.fetchPage(this.currentPage++).subscribe((page) => {
           this.items.push(...page.content);
           this.totalPages = page.totalPages;
         }),
       );
-
-      this.subscriptions.push(observablePage.subscribe());
     }
   }
 }

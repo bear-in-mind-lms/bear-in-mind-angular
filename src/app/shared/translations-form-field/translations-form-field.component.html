@@ -3,7 +3,7 @@
   <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
     <mat-form-field *ngFor="let translationFieldLabel of translationFieldLabelMap | keyvalue" class="full-width">
       <mat-label>{{translationFieldLabel.value}}</mat-label>
-      <input matInput [formControl]="translationFieldFormControlMap.get(translationFieldLabel.key)!"/>
+      <input matInput [formControl]="translationFieldFormControlMap.get(translationFieldLabel.key)!" />
     </mat-form-field>
   </mat-tab>
   <mat-tab disabled>

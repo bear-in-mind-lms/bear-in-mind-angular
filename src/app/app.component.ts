@@ -8,7 +8,7 @@ import { LocationHistoryService } from './routing/location-history.service';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private routerSubscription!: Subscription;
+  private routerSubscription?: Subscription;
 
   constructor(
     private readonly router: Router,
@@ -35,6 +35,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routerSubscription.unsubscribe();
+    this.routerSubscription?.unsubscribe();
   }
 }

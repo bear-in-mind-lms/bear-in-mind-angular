@@ -19,14 +19,14 @@ export class UserApiService {
   findUserViewDtoBy(id: number) {
     return this.api.get<UserViewDto>({
       path: path('/:id'),
-      pathVariables: { id: id },
+      pathVariables: { id },
     });
   }
 
   findUserMainViewDto(listLength: number) {
     return this.api.get<UserMainViewDto>({
       path: path('/main-view'),
-      params: { listLength: listLength },
+      params: { listLength },
     });
   }
 

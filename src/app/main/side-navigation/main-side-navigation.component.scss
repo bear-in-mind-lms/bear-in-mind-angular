@@ -4,6 +4,10 @@
   background-color: color.$side-navigation;
 }
 
+.side-navigation-content {
+  height: 100vh;
+}
+
 .navigation-list {
   min-width: 256px;
 }

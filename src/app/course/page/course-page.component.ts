@@ -30,11 +30,11 @@ import { CourseViewDto } from '../course-view-dto';
   templateUrl: './course-page.component.html',
 })
 export class CoursePageComponent implements OnInit {
-  readonly previousLocation = AppRoute.courses.routerLink;
-  readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
+  protected readonly previousLocation = AppRoute.courses.routerLink;
+  protected readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
 
-  courseId!: number;
-  courseViewDtoObservable!: Observable<ApiResponse<CourseViewDto>>;
+  protected courseId!: number;
+  protected courseViewDtoObservable!: Observable<ApiResponse<CourseViewDto>>;
 
   constructor(
     private readonly route: ActivatedRoute,

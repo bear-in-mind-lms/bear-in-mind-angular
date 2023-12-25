@@ -33,9 +33,8 @@ const TIME_OPTIONS = (() => {
   styleUrls: ['./date-time-form-field.component.scss'],
 })
 export class DateTimeFormFieldComponent {
-  readonly timeOptions = TIME_OPTIONS;
-
-  readonly dateFormat = TimeConfig.dateFormat;
+  protected readonly timeOptions = TIME_OPTIONS;
+  protected readonly dateFormat = TimeConfig.dateFormat;
 
   @Input({ required: true }) fieldLabel!: string;
   @Input({ required: true }) dateFormControl!: FormControl<Moment | null>;

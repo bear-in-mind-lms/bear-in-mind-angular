@@ -57,7 +57,7 @@ export class AvailableCoursePageContentComponent implements OnDestroy {
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result !== undefined) {
-          this.enrollInCourse();
+          this.sendEnrollInCourseRequest();
         }
       }),
     );
@@ -67,7 +67,7 @@ export class AvailableCoursePageContentComponent implements OnDestroy {
     return this.subscriptions.some((subscription) => !subscription.closed);
   }
 
-  private enrollInCourse() {
+  private sendEnrollInCourseRequest() {
     this.subscriptions.push(
       this.courseApi.enrollUserInCourse(this.courseId).subscribe((response) => {
         if (response.isSuccess()) {

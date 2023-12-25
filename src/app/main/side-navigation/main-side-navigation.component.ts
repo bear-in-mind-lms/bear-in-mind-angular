@@ -111,7 +111,7 @@ const NAVIGATION_NODES: NavigationNode[] = [
   styleUrls: ['./main-side-navigation.component.scss'],
 })
 export class MainSideNavigationComponent implements OnInit {
-  navigationNodes!: NavigationNode[];
+  protected navigationNodes!: NavigationNode[];
 
   constructor(private readonly loggedInUser: LoggedInUserService) {}
 

@@ -23,7 +23,7 @@ export class UserGroupApiService {
   findUserGroupDtoBy(id: number) {
     return this.api.get<UserGroupDto>({
       path: path('/:id'),
-      pathVariables: { id: id },
+      pathVariables: { id },
     });
   }
 
@@ -44,7 +44,7 @@ export class UserGroupApiService {
   join(groupId: number) {
     return this.api.post({
       path: path('/join/:groupId'),
-      pathVariables: { groupId: groupId },
+      pathVariables: { groupId },
     });
   }
 }

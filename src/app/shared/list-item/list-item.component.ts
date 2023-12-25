@@ -24,9 +24,10 @@ import { TextAvatarComponent } from '../text-avatar/text-avatar.component';
   styleUrls: ['./list-item.component.scss'],
 })
 export class ListItemComponent implements OnInit {
-  itemRoute!: string;
-  itemImage?: string;
-  hasAvatarPlaceholder = false;
+  private hasAvatarPlaceholder = false;
+
+  protected itemRoute!: string;
+  protected itemImage?: string;
 
   @Input({ required: true }) item!: ListItemDto;
   @Input({ required: true }) route!: string;

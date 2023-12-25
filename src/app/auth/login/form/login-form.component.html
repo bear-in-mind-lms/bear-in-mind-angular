@@ -2,14 +2,14 @@
   <mat-form-field hideRequiredMarker class="full-width">
     <mat-label i18n="@@username">*</mat-label>
     <mat-icon matPrefix>person_outline</mat-icon>
-    <input matInput [formControl]="loginForm.controls.username" required/>
+    <input matInput [formControl]="loginForm.controls.username" required />
     <mat-error *ngIf="loginForm.controls.username.invalid" i18n="@@fieldIsRequired">*</mat-error>
   </mat-form-field>
 
   <mat-form-field hideRequiredMarker class="full-width">
     <mat-label i18n="@@password">*</mat-label>
     <mat-icon matPrefix>lock_outline</mat-icon>
-    <input matInput [formControl]="loginForm.controls.password" [type]="obscure ? 'password' : 'text'" required/>
+    <input matInput [formControl]="loginForm.controls.password" [type]="obscure ? 'password' : 'text'" required />
     <a mat-icon-button matSuffix (click)="obscure = !obscure">
       <mat-icon>{{obscure ? "visibility_off" : "visibility"}}</mat-icon>
     </a>

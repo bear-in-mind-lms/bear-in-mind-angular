@@ -39,7 +39,7 @@ function getUrlIcon(url: string) {
   templateUrl: './course-lesson-part.component.html',
 })
 export class CourseLessonPartComponent implements OnInit {
-  parsedAttachments?: Attachment[];
+  protected parsedAttachments?: Attachment[];
 
   @Input({ required: true }) lessonPart!: CourseLessonPartDto;
 
