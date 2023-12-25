@@ -114,7 +114,7 @@ export class QuizAnswersPageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result !== undefined) {
-          this.sendEvaluationRequest();
+          this.sendEvaluateRequest();
         } else {
           this.isEvaluating = false;
         }
@@ -122,7 +122,7 @@ export class QuizAnswersPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  private sendEvaluationRequest() {
+  private sendEvaluateRequest() {
     this.evaluateSubscription = this.evaluationApi
       .evaluate(this.quizId, this.userId, this.createQuizEvaluationDto())
       .subscribe((response) => {

@@ -14,12 +14,12 @@ import { UserConfig } from '../../user-config';
   templateUrl: './group-members-page.component.html',
 })
 export class GroupMembersPageComponent {
-  readonly previousLocation = AppRoute.users.routerLink;
-  readonly userRoute = AppRoute.user.routerLink;
+  protected readonly previousLocation = AppRoute.users.routerLink;
+  protected readonly userRoute = AppRoute.user.routerLink;
 
   constructor(private readonly userApi: UserApiService) {}
 
-  readonly fetchPage = (page: number) => {
+  protected readonly fetchPage = (page: number) => {
     return this.userApi
       .findGroupMemberPage({
         pageNumber: page,

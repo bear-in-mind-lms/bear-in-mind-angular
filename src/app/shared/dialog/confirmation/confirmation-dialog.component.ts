@@ -26,7 +26,7 @@ export class ConfirmationDialog {
     @Inject(MAT_DIALOG_DATA) protected readonly data: DialogData,
   ) {}
 
-  close() {
+  protected close() {
     this.dialogRef.close();
   }
 }

@@ -11,5 +11,5 @@ import { CourseCreatorFormComponent } from '../form/course-creator-form.componen
   templateUrl: './course-creator-page.component.html',
 })
 export class CourseCreatorPageComponent {
-  readonly previousLocation = AppRoute.courses.routerLink;
+  protected readonly previousLocation = AppRoute.courses.routerLink;
 }

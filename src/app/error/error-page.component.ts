@@ -26,7 +26,7 @@ export class ErrorPageComponent implements OnInit {
     this.imageUrl = `url(${value})`;
   }
 
-  gradient!: string;
+  protected gradient!: string;
 
   ngOnInit() {
     this.gradient = `linear-gradient(${this.gradientColors.join(',')})`;

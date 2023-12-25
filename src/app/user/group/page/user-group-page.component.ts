@@ -90,7 +90,7 @@ export class UserGroupPageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result !== undefined) {
-          this.joinGroup();
+          this.sendJoinGroupRequest();
         }
       }),
     );
@@ -100,7 +100,7 @@ export class UserGroupPageComponent implements OnInit, OnDestroy {
     return this.subscriptions.some((subscription) => !subscription.closed);
   }
 
-  private joinGroup() {
+  private sendJoinGroupRequest() {
     this.subscriptions.push(
       this.userGroupApi.join(this.userGroupId).subscribe((response) => {
         if (response.isSuccess()) {

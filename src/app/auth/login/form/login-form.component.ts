@@ -29,12 +29,12 @@ import { LoggedInUserService } from '../../logged-in-user.service';
 export class LoginFormComponent implements OnDestroy {
   private logInSubscription?: Subscription;
 
-  readonly loginForm = new FormGroup({
+  protected readonly loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
 
-  obscure = true;
+  protected obscure = true;
 
   constructor(
     private readonly router: Router,
@@ -47,7 +47,7 @@ export class LoginFormComponent implements OnDestroy {
     this.logInSubscription?.unsubscribe();
   }
 
-  async onSubmit() {
+  protected async onSubmit() {
     this.logInSubscription = this.authApi
       .logIn(await this.createCredentialsDto())
       .subscribe((response) => {

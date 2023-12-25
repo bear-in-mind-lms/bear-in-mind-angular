@@ -31,16 +31,16 @@ import { LocationHistoryService } from '../../routing/location-history.service';
   styleUrls: ['./app-bar.component.scss'],
 })
 export class AppBarComponent implements AfterViewInit, OnDestroy {
-  readonly toolbarHeight = 64;
-  readonly prominentToolbarHeight = 160;
-  readonly prominentToolbarContentTop = 48;
-
   private scrollSubscription?: Subscription;
-
-  @Input() previousLocation?: string;
 
   private isProminent!: boolean;
   private backgroundImageUrl?: string;
+
+  protected readonly toolbarHeight = 64;
+  protected readonly prominentToolbarHeight = 160;
+  protected readonly prominentToolbarContentTop = 48;
+
+  @Input() previousLocation?: string;
 
   @Input()
   get prominent() {
@@ -60,9 +60,9 @@ export class AppBarComponent implements AfterViewInit, OnDestroy {
     this.backgroundImageUrl = value === undefined ? undefined : `url(${value})`;
   }
 
-  @ViewChild(MatToolbar, { read: ElementRef }) toolbar!: ElementRef;
+  @ViewChild(MatToolbar, { read: ElementRef }) protected toolbar!: ElementRef;
   @ViewChild('toolbarContent', { read: ElementRef })
-  toolbarContent!: ElementRef;
+  protected toolbarContent!: ElementRef;
 
   constructor(
     private readonly scrollDispatcher: ScrollDispatcher,
@@ -83,7 +83,7 @@ export class AppBarComponent implements AfterViewInit, OnDestroy {
     this.scrollSubscription?.unsubscribe();
   }
 
-  goBack() {
+  protected goBack() {
     const lastLocation = this.locationHistoryService.lastLocation;
     if (lastLocation !== undefined) {
       this.location.back();

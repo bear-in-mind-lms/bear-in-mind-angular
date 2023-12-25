@@ -7,8 +7,8 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
   <div #toolbarContent [ngStyle]="{'top.px': prominent ? prominentToolbarContentTop : 0}" class="toolbar-content">
-    <ng-content/>
+    <ng-content />
   </div>
   <span class="spacer"></span>
-  <ng-content select="[toolbar-actions]"/>
+  <ng-content select="[toolbar-actions]" />
 </mat-toolbar>

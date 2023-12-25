@@ -14,13 +14,13 @@ import { CourseConfig } from '../course-config';
   templateUrl: './available-courses-page.component.html',
 })
 export class AvailableCoursesPageComponent {
-  readonly previousLocation = AppRoute.courses.routerLink;
-  readonly courseRoute = AppRoute.course.routerLink;
-  readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
+  protected readonly previousLocation = AppRoute.courses.routerLink;
+  protected readonly courseRoute = AppRoute.course.routerLink;
+  protected readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
 
   constructor(private readonly courseApi: CourseApiService) {}
 
-  readonly fetchPage = (page: number) => {
+  protected readonly fetchPage = (page: number) => {
     return this.courseApi
       .findAvailableCoursePage({
         pageNumber: page,

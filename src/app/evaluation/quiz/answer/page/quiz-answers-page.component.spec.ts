@@ -8,7 +8,7 @@ describe('QuizAnswersPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [QuizAnswersPageComponent]
+      imports: [QuizAnswersPageComponent],
     });
     fixture = TestBed.createComponent(QuizAnswersPageComponent);
     component = fixture.componentInstance;

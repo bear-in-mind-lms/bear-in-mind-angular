@@ -30,28 +30,32 @@ import { CourseMainViewDto } from '../course-main-view-dto';
   templateUrl: './courses-page.component.html',
 })
 export class CoursesPageComponent implements OnInit, OnDestroy {
-  readonly courseRoute = AppRoute.course.routerLink;
-  readonly createCourseRoute = AppRoute.createCourse.routerLink;
+  private courseMainViewDtoSubscription?: Subscription;
 
-  readonly conductedCoursesRoute = AppRoute.conductedCourses.routerLink;
-  readonly activeCoursesRoute = AppRoute.activeCourses.routerLink;
-  readonly availableCoursesRoute = AppRoute.availableCourses.routerLink;
-  readonly completedCoursesRoute = AppRoute.completedCourses.routerLink;
+  protected readonly courseRoute = AppRoute.course.routerLink;
+  protected readonly createCourseRoute = AppRoute.createCourse.routerLink;
 
-  readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
-  readonly emptyConductedCoursesPlaceholder =
+  protected readonly conductedCoursesRoute =
+    AppRoute.conductedCourses.routerLink;
+  protected readonly activeCoursesRoute = AppRoute.activeCourses.routerLink;
+  protected readonly availableCoursesRoute =
+    AppRoute.availableCourses.routerLink;
+  protected readonly completedCoursesRoute =
+    AppRoute.completedCourses.routerLink;
+
+  protected readonly courseImagePlaceholder = CourseConfig.imagePlaceholder;
+  protected readonly emptyConductedCoursesPlaceholder =
     'assets/graphics/empty-conducted-courses.png';
-  readonly emptyActiveCoursesPlaceholder =
+  protected readonly emptyActiveCoursesPlaceholder =
     'assets/graphics/empty-active-courses.png';
-  readonly emptyAvailableCoursesPlaceholder =
+  protected readonly emptyAvailableCoursesPlaceholder =
     'assets/graphics/empty-available-courses.png';
-  readonly emptyCompletedCoursesPlaceholder =
+  protected readonly emptyCompletedCoursesPlaceholder =
     'assets/graphics/empty-completed-courses.png';
 
-  courseMainViewDtoSubscription!: Subscription;
-  courseMainViewDto?: CourseMainViewDto;
+  protected courseMainViewDto?: CourseMainViewDto;
 
-  hasTeacherRole!: boolean;
+  protected hasTeacherRole!: boolean;
 
   constructor(
     private readonly loggedInUser: LoggedInUserService,
@@ -79,6 +83,6 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.courseMainViewDtoSubscription.unsubscribe();
+    this.courseMainViewDtoSubscription?.unsubscribe();
   }
 }

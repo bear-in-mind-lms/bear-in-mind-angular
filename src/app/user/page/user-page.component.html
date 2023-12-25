@@ -4,7 +4,7 @@
 
       <mat-card class="user-details-card">
         <img *ngIf="userImage" [ngSrc]="userImage" width="96" height="96" alt="">
-        <app-text-avatar *ngIf="!userImage" [text]="userName | initials" [size]="96"/>
+        <app-text-avatar *ngIf="!userImage" [text]="userName | initials" [size]="96" />
         <mat-list>
           <mat-list-item *ngIf="response.content!.title">
             <mat-icon matListItemIcon>school</mat-icon>
@@ -24,10 +24,10 @@
           <app-list-item *ngFor="let course of commonCourses"
                          [item]="course"
                          [route]="courseRoute"
-                         [imagePlaceholder]="courseImagePlaceholder"/>
+                         [imagePlaceholder]="courseImagePlaceholder" />
         </mat-action-list>
         <ng-template #emptyCourses>
-          <app-page-section-content-placeholder [placeholderImage]="emptyCoursesPlaceholder"/>
+          <app-page-section-content-placeholder [placeholderImage]="emptyCoursesPlaceholder" />
         </ng-template>
       </app-page-section>
 
@@ -36,10 +36,10 @@
           <app-list-item *ngFor="let group of commonGroups"
                          [item]="group"
                          [route]="userGroupRoute"
-                         [imagePlaceholder]="userGroupImagePlaceholder"/>
+                         [imagePlaceholder]="userGroupImagePlaceholder" />
         </mat-action-list>
         <ng-template #emptyGroups>
-          <app-page-section-content-placeholder [placeholderImage]="emptyGroupsPlaceholder"/>
+          <app-page-section-content-placeholder [placeholderImage]="emptyGroupsPlaceholder" />
         </ng-template>
       </app-page-section>
 

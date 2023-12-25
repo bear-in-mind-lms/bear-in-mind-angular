@@ -29,7 +29,7 @@ export class CourseApiService {
   findCourseMainViewDto(listLength: number) {
     return this.api.get<CourseMainViewDto>({
       path: path('/main-view'),
-      params: { listLength: listLength },
+      params: { listLength },
     });
   }
 
@@ -64,14 +64,14 @@ export class CourseApiService {
   findCourseViewDtoBy(id: number) {
     return this.api.get<CourseViewDto>({
       path: path('/:id'),
-      pathVariables: { id: id },
+      pathVariables: { id },
     });
   }
 
   enrollUserInCourse(courseId: number) {
     return this.api.post({
       path: path('/enroll/:courseId'),
-      pathVariables: { courseId: courseId },
+      pathVariables: { courseId },
     });
   }
 }

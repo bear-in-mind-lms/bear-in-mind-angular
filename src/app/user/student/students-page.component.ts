@@ -14,12 +14,12 @@ import { UserConfig } from '../user-config';
   templateUrl: './students-page.component.html',
 })
 export class StudentsPageComponent {
-  readonly previousLocation = AppRoute.users.routerLink;
-  readonly userRoute = AppRoute.user.routerLink;
+  protected readonly previousLocation = AppRoute.users.routerLink;
+  protected readonly userRoute = AppRoute.user.routerLink;
 
   constructor(private readonly userApi: UserApiService) {}
 
-  readonly fetchPage = (page: number) => {
+  protected readonly fetchPage = (page: number) => {
     return this.userApi
       .findStudentPage({
         pageNumber: page,

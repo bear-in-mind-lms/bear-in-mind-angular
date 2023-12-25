@@ -19,7 +19,7 @@ export class CardListItemComponent implements OnInit {
   @Input({ required: true }) route!: string;
   @Input({ required: true }) imagePlaceholder!: string;
 
-  itemRoute!: string;
+  protected itemRoute!: string;
 
   ngOnInit() {
     this.itemRoute = injectPathVariables(this.route, {

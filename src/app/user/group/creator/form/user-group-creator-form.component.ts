@@ -67,7 +67,7 @@ export class UserGroupCreatorFormComponent implements OnDestroy {
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result !== undefined) {
-          this.createUserGroup();
+          this.sendCreateUserGroupRequest();
         }
       }),
     );
@@ -77,7 +77,7 @@ export class UserGroupCreatorFormComponent implements OnDestroy {
     return this.subscriptions.some((subscription) => !subscription.closed);
   }
 
-  private createUserGroup() {
+  private sendCreateUserGroupRequest() {
     this.subscriptions.push(
       this.userGroupApi
         .createUserGroup(this.createUserGroupDto())

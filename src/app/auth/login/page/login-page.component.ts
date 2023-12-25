@@ -11,5 +11,6 @@ import { LoginFormComponent } from '../form/login-form.component';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  readonly backgroundUrl = 'url(assets/graphics/login-page-background.png)';
+  protected readonly backgroundUrl =
+    'url(assets/graphics/login-page-background.png)';
 }

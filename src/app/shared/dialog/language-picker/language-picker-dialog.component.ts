@@ -41,16 +41,18 @@ interface DialogData {
   templateUrl: './language-picker-dialog.component.html',
 })
 export class LanguagePickerDialog implements OnInit {
-  readonly localeOptions = [...SupportedLocales.entries()];
+  private readonly localeOptions = [...SupportedLocales.entries()];
 
-  formControl = new FormControl('');
-  filteredLocaleOptions!: Observable<readonly (readonly [string, string])[]>;
+  protected formControl = new FormControl('');
+  protected filteredLocaleOptions!: Observable<
+    readonly (readonly [string, string])[]
+  >;
 
-  localeName = '';
+  protected localeName = '';
 
   constructor(
-    readonly dialogRef: MatDialogRef<LanguagePickerDialog>,
-    @Inject(MAT_DIALOG_DATA) readonly data: DialogData,
+    private readonly dialogRef: MatDialogRef<LanguagePickerDialog>,
+    @Inject(MAT_DIALOG_DATA) private readonly data: DialogData,
   ) {}
 
   ngOnInit() {
@@ -62,7 +64,7 @@ export class LanguagePickerDialog implements OnInit {
     );
   }
 
-  close() {
+  protected close() {
     this.dialogRef.close();
   }
 

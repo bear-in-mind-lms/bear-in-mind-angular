@@ -15,5 +15,5 @@ import { UserGroupCreatorFormComponent } from '../form/user-group-creator-form.c
   templateUrl: './user-group-creator-page.component.html',
 })
 export class UserGroupCreatorPageComponent {
-  readonly previousLocation = AppRoute.users.routerLink;
+  protected readonly previousLocation = AppRoute.users.routerLink;
 }

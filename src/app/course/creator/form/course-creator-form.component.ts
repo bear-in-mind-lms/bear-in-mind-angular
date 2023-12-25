@@ -98,7 +98,7 @@ export class CourseCreatorFormComponent implements OnDestroy {
     this.subscriptions.push(
       dialogRef.afterClosed().subscribe((result) => {
         if (result !== undefined) {
-          this.createCourse();
+          this.sendCreateCourseRequest();
         }
       }),
     );
@@ -108,7 +108,7 @@ export class CourseCreatorFormComponent implements OnDestroy {
     return this.subscriptions.some((subscription) => !subscription.closed);
   }
 
-  private createCourse() {
+  private sendCreateCourseRequest() {
     this.subscriptions.push(
       this.courseApi
         .createCourse(this.createCourseDto())
