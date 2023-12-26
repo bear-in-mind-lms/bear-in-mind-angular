@@ -50,7 +50,7 @@ function createIsoDateTimeStringFromControls(
   styleUrls: ['./course-creator-form.component.scss'],
 })
 export class CourseCreatorFormComponent implements OnDestroy {
-  private subscriptions: Subscription[] = [];
+  private readonly subscriptions: Subscription[] = [];
 
   protected readonly translationFieldLabelMap = new Map<
     TranslationField,

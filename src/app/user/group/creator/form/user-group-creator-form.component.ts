@@ -28,7 +28,7 @@ type TranslationField = 'name';
   templateUrl: './user-group-creator-form.component.html',
 })
 export class UserGroupCreatorFormComponent implements OnDestroy {
-  private subscriptions: Subscription[] = [];
+  private readonly subscriptions: Subscription[] = [];
 
   protected readonly translationFieldLabelMap = new Map<
     TranslationField,

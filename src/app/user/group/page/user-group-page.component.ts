@@ -38,7 +38,7 @@ import { UserGroupRole } from '../user-group-role';
 })
 export class UserGroupPageComponent implements OnInit, OnDestroy {
   private userGroupId!: number;
-  private subscriptions: Subscription[] = [];
+  private readonly subscriptions: Subscription[] = [];
 
   protected readonly previousLocation = AppRoute.users.routerLink;
   protected readonly userRoute = AppRoute.user.routerLink;

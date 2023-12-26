@@ -10,7 +10,9 @@ import { Subscription } from 'rxjs';
 import { ApiErrorSnackBar } from '../../../api/api-error-snack-bar/api-error-snack-bar.service';
 import { AuthApiService } from '../../../api/auth/auth-api.service';
 import { AppRoute } from '../../../routing/app-route';
+import { PasswordFormFieldDirective } from '../../../shared/password-form-field/password-form-field.directive';
 import { CredentialsDto } from '../../credentials-dto';
+import { digestPassword } from '../../crypto';
 import { LoggedInUserService } from '../../logged-in-user.service';
 
 @Component({
@@ -23,18 +25,17 @@ import { LoggedInUserService } from '../../logged-in-user.service';
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
+    PasswordFormFieldDirective,
   ],
   templateUrl: './login-form.component.html',
 })
 export class LoginFormComponent implements OnDestroy {
-  private logInSubscription?: Subscription;
+  protected logInSubscription?: Subscription;
 
   protected readonly loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
-
-  protected obscure = true;
 
   constructor(
     private readonly router: Router,
@@ -47,7 +48,11 @@ export class LoginFormComponent implements OnDestroy {
     this.logInSubscription?.unsubscribe();
   }
 
-  protected async onSubmit() {
+  protected async logIn() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     this.logInSubscription = this.authApi
       .logIn(await this.createCredentialsDto())
       .subscribe((response) => {
@@ -66,14 +71,7 @@ export class LoginFormComponent implements OnDestroy {
     const controls = this.loginForm.controls;
     return {
       username: controls.username.value!,
-      password: await this.digestPassword(controls.password.value!),
+      password: await digestPassword(controls.password.value!),
     };
-  }
-
-  private async digestPassword(password: string) {
-    const encodedPassword = new TextEncoder().encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', encodedPassword);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join('');
   }
 }
