@@ -1,8 +1,9 @@
 import { incorrectCredentialsError } from '../../app/api/api-error';
 import { ApiResponse } from '../../app/api/api-response';
+import { CreateUserDto } from '../../app/auth/create-user-dto';
 import { CredentialsDto } from '../../app/auth/credentials-dto';
 import { LoginResponseDto } from '../../app/auth/login-response-dto';
-import { findUserByUsername } from '../user/mock-user-repository';
+import { createUser, findUserByUsername } from '../user/mock-user-repository';
 
 /**
  * SHA-256 hash of "password"
@@ -21,6 +22,15 @@ export function logIn(
   if (user === undefined) {
     return ApiResponse.error(incorrectCredentialsError);
   }
+
+  return ApiResponse.success({
+    userId: user.id,
+    authorities: user.roles,
+  });
+}
+
+export function signUp(dto: CreateUserDto): ApiResponse<LoginResponseDto> {
+  const user = createUser(dto);
 
   return ApiResponse.success({
     userId: user.id,

@@ -27,7 +27,7 @@ import { CourseLessonCardComponent } from '../lesson/card/course-lesson-card.com
   templateUrl: './available-course-page-content.component.html',
 })
 export class AvailableCoursePageContentComponent implements OnDestroy {
-  private subscriptions: Subscription[] = [];
+  private readonly subscriptions: Subscription[] = [];
 
   @Input({ required: true }) courseId!: number;
   @Input({ required: true }) course!: CourseViewDto;

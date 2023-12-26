@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="logIn()">
   <mat-form-field hideRequiredMarker class="full-width">
     <mat-label i18n="@@username">*</mat-label>
     <mat-icon matPrefix>person_outline</mat-icon>
@@ -6,15 +6,22 @@
     <mat-error *ngIf="loginForm.controls.username.invalid" i18n="@@fieldIsRequired">*</mat-error>
   </mat-form-field>
 
-  <mat-form-field hideRequiredMarker class="full-width">
+  <mat-form-field appPasswordFormField hideRequiredMarker class="full-width">
     <mat-label i18n="@@password">*</mat-label>
     <mat-icon matPrefix>lock_outline</mat-icon>
-    <input matInput [formControl]="loginForm.controls.password" [type]="obscure ? 'password' : 'text'" required />
-    <a mat-icon-button matSuffix (click)="obscure = !obscure">
-      <mat-icon>{{obscure ? "visibility_off" : "visibility"}}</mat-icon>
+    <input matInput [formControl]="loginForm.controls.password" required />
+    <a mat-icon-button matSuffix>
+      <mat-icon />
     </a>
     <mat-error *ngIf="loginForm.controls.password.invalid" i18n="@@fieldIsRequired">*</mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" class="full-width" type="submit" i18n="@@logIn">*</button>
+  <button mat-raised-button
+          color="primary"
+          class="full-width"
+          type="submit"
+          [disabled]="logInSubscription?.closed === false"
+          i18n="@@logIn">
+    *
+  </button>
 </form>

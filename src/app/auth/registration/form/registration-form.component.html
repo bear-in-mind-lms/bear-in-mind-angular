@@ -1,0 +1,46 @@
+<form [formGroup]="registrationForm" (ngSubmit)="signUp()">
+  <mat-form-field class="full-width">
+    <mat-label i18n="@@email">*</mat-label>
+    <mat-icon matPrefix>alternate_email</mat-icon>
+    <input matInput [formControl]="registrationForm.controls.email" email type="email" required />
+    <mat-error *ngIf="emailError">{{emailError}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appPasswordFormField class="full-width">
+    <mat-label i18n="@@password">*</mat-label>
+    <mat-icon matPrefix>lock_outline</mat-icon>
+    <input matInput
+           [formControl]="registrationForm.controls.password"
+           required />
+    <a mat-icon-button matSuffix>
+      <mat-icon />
+    </a>
+    <mat-error *ngIf="registrationForm.controls.password.invalid" i18n="@@fieldIsRequired">*</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label i18n="@@firstName">*</mat-label>
+    <input matInput [formControl]="registrationForm.controls.firstName" required />
+    <mat-error *ngIf="registrationForm.controls.firstName.invalid" i18n="@@fieldIsRequired">*</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label i18n="@@middleName">*</mat-label>
+    <input matInput [formControl]="registrationForm.controls.middleName" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label i18n="@@lastName">*</mat-label>
+    <input matInput [formControl]="registrationForm.controls.lastName" required />
+    <mat-error *ngIf="registrationForm.controls.lastName.invalid" i18n="@@fieldIsRequired">*</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button
+          color="primary"
+          class="full-width"
+          type="submit"
+          [disabled]="signUpSubscription?.closed === false"
+          i18n="@@signUp">
+    *
+  </button>
+</form>

@@ -1,3 +1,5 @@
+import { CreateUserDto } from '../../app/auth/create-user-dto';
+import { UserRole } from '../../app/auth/user-role';
 import { UserCourseDto } from '../../app/user/user-course-dto';
 import { UserListItemDto } from '../../app/user/user-list-item-dto';
 import { mockCourses } from '../course/mock-course-data';
@@ -10,6 +12,22 @@ export function findUserById(id: number) {
 
 export function findUserByUsername(username: string) {
   return [...mockUsers.values()].find((user) => user.username === username);
+}
+
+export function createUser(dto: CreateUserDto) {
+  const id = [...mockUsers.keys()].sort((a, b) => b - a)[0] + 1;
+  const user = {
+    id: id,
+    username: dto.email,
+    name: `${dto.firstName}${
+      dto.middleName === undefined ? '' : `${dto.middleName} `
+    } ${dto.lastName}`,
+    registrationDateTime: new Date(Date.now()).toISOString(),
+    roles: [UserRole.student],
+  };
+
+  mockUsers.set(id, user);
+  return user;
 }
 
 export function findCommonUserCourses(
