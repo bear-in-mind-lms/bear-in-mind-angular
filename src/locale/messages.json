@@ -43,6 +43,7 @@
     "errorInvalidLanguageCode": "Language code is invalid or unsupported",
     "errorResourceNotFound": "Resource not found",
     "errorUnexpectedServerError": "Unexpected server error occurred, try again later",
+    "errorUserAlreadyExists": "User already exists",
     "evaluate": "Evaluate",
     "evaluatedAutomatically": "Evaluated automatically",
     "evaluation": "Evaluation",

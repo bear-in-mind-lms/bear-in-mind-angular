@@ -7,6 +7,21 @@ import { ApiError, unexpectedServerError } from './api-error';
 import { ApiResponse } from './api-response';
 import { ApiService, BodyType, UrlType } from './api-service';
 
+function createApiResponseError<ResponseType>(error?: ApiError) {
+  return ApiResponse.error<ResponseType>(error ?? unexpectedServerError);
+}
+
+function mapHttpResponseToApiResponse<ResponseType>(
+  response: HttpResponse<ResponseType | ApiError>,
+) {
+  const body = response.body;
+  if (response.ok) {
+    return ApiResponse.success(body as ResponseType);
+  }
+
+  return createApiResponseError<ResponseType>(body as ApiError);
+}
+
 @Injectable()
 export class HttpApiService extends ApiService {
   constructor(private readonly http: HttpClient) {
@@ -63,22 +78,10 @@ export class HttpApiService extends ApiService {
         withCredentials: true,
       })
       .pipe(
-        map(HttpApiService.mapHttpResponseToApiResponse),
-        catchError(() =>
-          of(ApiResponse.error<ResponseType>(unexpectedServerError)),
+        map(mapHttpResponseToApiResponse),
+        catchError((err) =>
+          of(createApiResponseError<ResponseType>(err.error)),
         ),
       );
-  }
-
-  private static mapHttpResponseToApiResponse<ResponseType>(
-    response: HttpResponse<ResponseType | ApiError>,
-  ) {
-    const body = response.body;
-    if (response.ok) {
-      return ApiResponse.success(body as ResponseType);
-    }
-
-    const errorBody = body as ApiError;
-    return ApiResponse.error<ResponseType>(errorBody ?? unexpectedServerError);
   }
 }
