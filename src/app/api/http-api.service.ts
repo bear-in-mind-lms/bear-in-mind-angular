@@ -3,11 +3,17 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { injectPathVariables, ParamsType } from '../shared/path-utils';
-import { ApiError, unexpectedServerError } from './api-error';
+import { ApiError, forbiddenError, unexpectedServerError } from './api-error';
 import { ApiResponse } from './api-response';
 import { ApiService, BodyType, UrlType } from './api-service';
 
-function createApiResponseError<ResponseType>(error?: ApiError) {
+function createApiResponseError<ResponseType>(
+  status: number,
+  error?: ApiError,
+) {
+  if (!error && status === 403) {
+    return ApiResponse.error<ResponseType>(forbiddenError);
+  }
   return ApiResponse.error<ResponseType>(error ?? unexpectedServerError);
 }
 
@@ -19,7 +25,10 @@ function mapHttpResponseToApiResponse<ResponseType>(
     return ApiResponse.success(body as ResponseType);
   }
 
-  return createApiResponseError<ResponseType>(body as ApiError);
+  return createApiResponseError<ResponseType>(
+    response.status,
+    body as ApiError,
+  );
 }
 
 @Injectable()
@@ -80,7 +89,7 @@ export class HttpApiService extends ApiService {
       .pipe(
         map(mapHttpResponseToApiResponse),
         catchError((err) =>
-          of(createApiResponseError<ResponseType>(err.error)),
+          of(createApiResponseError<ResponseType>(err.status, err.error)),
         ),
       );
   }

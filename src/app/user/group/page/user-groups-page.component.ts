@@ -12,6 +12,7 @@ import { AppBarComponent } from '../../../shared/app-bar/app-bar.component';
 import { PageContentComponent } from '../../../shared/page/content/page-content.component';
 import { CardListPageSectionContentComponent } from '../../../shared/page/section/card-list/card-list-page-section-content.component';
 import { PageSectionComponent } from '../../../shared/page/section/page-section.component';
+import { LoggedInUserAvatarComponent } from '../../logged-in/logged-in-user-avatar.component';
 import { UserConfig } from '../../user-config';
 import { UserMainViewDto } from '../../user-main-view-dto';
 
@@ -26,6 +27,7 @@ import { UserMainViewDto } from '../../user-main-view-dto';
     AppBarComponent,
     PageSectionComponent,
     CardListPageSectionContentComponent,
+    LoggedInUserAvatarComponent,
   ],
   templateUrl: './user-groups-page.component.html',
 })

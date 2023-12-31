@@ -2,11 +2,11 @@ import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterLink } from '@angular/router';
-import { AppRoute, AppRouteParam } from '../../routing/app-route';
-import { injectPathVariables } from '../../shared/path-utils';
-import { InitialsPipe } from '../../shared/pipe/initials.pipe';
-import { TextAvatarComponent } from '../../shared/text-avatar/text-avatar.component';
-import { UserListItemDto } from '../user-list-item-dto';
+import { AppRoute, AppRouteParam } from '../../../routing/app-route';
+import { injectPathVariables } from '../../../shared/path-utils';
+import { InitialsPipe } from '../../../shared/pipe/initials.pipe';
+import { TextAvatarComponent } from '../../../shared/text-avatar/text-avatar.component';
+import { UserListItemDto } from '../../user-list-item-dto';
 
 @Component({
   selector: 'app-user-chip-list',

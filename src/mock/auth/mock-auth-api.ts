@@ -25,6 +25,8 @@ export function logIn(
 
   return ApiResponse.success({
     userId: user.id,
+    userFullName: user.name,
+    userImage: user.image,
     authorities: user.roles,
   });
 }
@@ -34,6 +36,11 @@ export function signUp(dto: CreateUserDto): ApiResponse<LoginResponseDto> {
 
   return ApiResponse.success({
     userId: user.id,
+    userFullName: user.name,
     authorities: user.roles,
   });
+}
+
+export function logOut(): ApiResponse<any> {
+  return ApiResponse.success();
 }

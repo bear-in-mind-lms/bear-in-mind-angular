@@ -1,0 +1,12 @@
+<button mat-icon-button class="no-padding" [matMenuTriggerFor]="menu">
+  <img *ngIf="userImage" [ngSrc]="userImage" class="user-image" width="32" height="32" alt="">
+  <app-text-avatar *ngIf="!userImage" [text]="userFullName | initials" [size]="32" />
+</button>
+<mat-menu #menu="matMenu">
+  <p class="mat-headline-6 user-full-name">{{userFullName}}</p>
+  <p>{{userRole}}</p>
+  <button mat-menu-item (click)="logOut()">
+    <mat-icon>logout</mat-icon>
+    <span i18n="@@logOut">*</span>
+  </button>
+</mat-menu>
