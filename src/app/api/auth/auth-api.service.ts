@@ -27,4 +27,11 @@ export class AuthApiService {
       dto,
     );
   }
+
+  logOut() {
+    return this.api.post({
+      path: path('/log-out'),
+      params: { client: 'WEB' },
+    });
+  }
 }

@@ -12,6 +12,7 @@ import { AppBarComponent } from '../../shared/app-bar/app-bar.component';
 import { PageContentComponent } from '../../shared/page/content/page-content.component';
 import { CardListPageSectionContentComponent } from '../../shared/page/section/card-list/card-list-page-section-content.component';
 import { PageSectionComponent } from '../../shared/page/section/page-section.component';
+import { LoggedInUserAvatarComponent } from '../../user/logged-in/logged-in-user-avatar.component';
 import { CourseConfig } from '../course-config';
 import { CourseMainViewDto } from '../course-main-view-dto';
 
@@ -26,6 +27,7 @@ import { CourseMainViewDto } from '../course-main-view-dto';
     AppBarComponent,
     PageSectionComponent,
     CardListPageSectionContentComponent,
+    LoggedInUserAvatarComponent,
   ],
   templateUrl: './courses-page.component.html',
 })
